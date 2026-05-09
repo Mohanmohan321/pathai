@@ -78,3 +78,53 @@ h1, h2, h3, h4, h5, h6 {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+@keyframes moveDot {
+  0%, 100% { top: 8%; right: 8%; }
+  25%  { top: 8%; right: calc(100% - 28px); }
+  50%  { top: calc(100% - 28px); right: calc(100% - 28px); }
+  75%  { top: calc(100% - 28px); right: 8%; }
+}
+
+.stat-outer {
+  position: relative;
+  border-radius: 24px;
+}
+
+.stat-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: moveDot 3.5s linear infinite;
+  z-index: 20;
+  filter: blur(4px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 12px 4px rgba(255,255,255,0.6);
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.stat-ray {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.stat-line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+}
+.stat-line.top    { top: 0; left: 0; right: 0; height: 1px; }
+.stat-line.left   { top: 0; left: 0; bottom: 0; width: 1px; }
+.stat-line.bottom { bottom: 0; left: 0; right: 0; height: 1px; }
+.stat-line.right  { top: 0; right: 0; bottom: 0; width: 1px; }

@@ -7,33 +7,29 @@ const stats = [
     number: "3",
     label: "Days Camp",
     sub: "May 15-17, 2026",
-    from: "from-sky-400",
-    to: "to-blue-600",
-    shadow: "shadow-sky-200",
+    gradient: "linear-gradient(135deg, #38bdf8, #2563eb)",
+    dotDelay: "0s",
   },
   {
     number: "12+",
     label: "Hours Hands-On",
     sub: "Zero passive lectures",
-    from: "from-orange-400",
-    to: "to-red-500",
-    shadow: "shadow-orange-200",
+    gradient: "linear-gradient(135deg, #fb923c, #ef4444)",
+    dotDelay: "0.8s",
   },
   {
     number: "3",
     label: "Projects Built",
     sub: "Comic · Video · Deck",
-    from: "from-emerald-400",
-    to: "to-green-600",
-    shadow: "shadow-emerald-200",
+    gradient: "linear-gradient(135deg, #34d399, #059669)",
+    dotDelay: "1.6s",
   },
   {
     number: "30",
     label: "Max Seats",
     sub: "Small batch only",
-    from: "from-amber-400",
-    to: "to-orange-500",
-    shadow: "shadow-amber-200",
+    gradient: "linear-gradient(135deg, #fbbf24, #f97316)",
+    dotDelay: "2.4s",
   },
 ];
 
@@ -49,15 +45,32 @@ export default function StatsBar() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.1 }}
-              className={`bg-gradient-to-br ${stat.from} ${stat.to} rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-white text-center shadow-xl ${stat.shadow}`}
+              className="stat-outer"
             >
-              <div className="text-4xl sm:text-5xl font-black mb-1 leading-none tracking-tight">
-                {stat.number}
+              {/* Moving dot */}
+              <div className="stat-dot" style={{ animationDelay: stat.dotDelay }} />
+
+              {/* Card */}
+              <div
+                className="stat-card p-6 sm:p-7 text-white text-center"
+                style={{ background: stat.gradient }}
+              >
+                <div className="stat-ray" />
+                <div className="stat-line top" />
+                <div className="stat-line left" />
+                <div className="stat-line bottom" />
+                <div className="stat-line right" />
+
+                <div className="relative z-10">
+                  <div className="text-4xl sm:text-5xl font-black mb-1 leading-none tracking-tight">
+                    {stat.number}
+                  </div>
+                  <div className="font-bold text-sm sm:text-base text-white/95 leading-tight">
+                    {stat.label}
+                  </div>
+                  <div className="text-xs text-white/70 mt-1">{stat.sub}</div>
+                </div>
               </div>
-              <div className="font-bold text-sm sm:text-base text-white/95 leading-tight">
-                {stat.label}
-              </div>
-              <div className="text-xs text-white/75 mt-1">{stat.sub}</div>
             </motion.div>
           ))}
         </div>
