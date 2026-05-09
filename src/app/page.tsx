@@ -13,7 +13,6 @@ import TrustSafety from "@/components/TrustSafety";
 import Assessment from "@/components/Assessment";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
-import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 export default function Home() {
   return (
@@ -34,7 +33,6 @@ export default function Home() {
         <Assessment />
         <Pricing />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
     </div>

@@ -1,52 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { GooeyFilter } from "@/components/ui/gooey-filter";
+import { useScreenSize } from "@/hooks/use-screen-size";
 
 const projects = [
   {
     day: "Day 1",
-    emoji: "📊",
     title: "AI Presentation",
     tagline: "Research → Outline → Publish",
     desc: "Kids use ChatGPT to research a topic they love, structure it with AI, and design a polished 5-7 slide deck in Canva.",
     skills: ["AI Prompting", "Research", "Canva", "Public Speaking"],
-    gradient: "from-sky-400 via-blue-500 to-blue-600",
-    badge: "bg-white/20 text-white",
+    color: "#3b82f6",
   },
   {
     day: "Day 2",
-    emoji: "📚",
     title: "AI Comic Book",
     tagline: "Story → Illustrations → Print",
     desc: "Students write characters and plot with AI help, then generate their own illustrations using Canva Magic Media.",
     skills: ["Storytelling", "AI Art", "Design", "Canva"],
-    gradient: "from-fuchsia-400 via-pink-500 to-rose-500",
-    badge: "bg-white/20 text-white",
+    color: "#ec4899",
   },
   {
     day: "Day 3",
-    emoji: "🎬",
     title: "AI Video",
     tagline: "Script → Visuals → Premiere",
     desc: "Using Pictory AI, students turn their Day 2 comic into a 30-60 second video with narration, music, and scenes.",
     skills: ["Video Production", "Script Writing", "AI Tools", "Presenting"],
-    gradient: "from-amber-400 via-orange-400 to-orange-500",
-    badge: "bg-white/20 text-white",
+    color: "#f97316",
   },
 ];
 
+const TAB_H = 52;   // px — tab bar height
+const PANEL_H = 280; // px — content panel height
+
 export default function WhatBuild() {
+  const [activeTab, setActiveTab] = useState(0);
+  const screenSize = useScreenSize();
+  const active = projects[activeTab];
+
   return (
     <section className="py-16 sm:py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+      <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 8 : 14} />
+
+      <div className="max-w-4xl mx-auto px-5 sm:px-6">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 leading-tight">
             3 Days.{" "}
             <span className="text-gradient">3 Real Projects.</span>
           </h2>
@@ -55,50 +62,105 @@ export default function WhatBuild() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
-          {projects.map((project, i) => (
+        {/* Tab + Panel */}
+        <div className="relative" style={{ height: TAB_H + PANEL_H }}>
+
+          {/* ── Layer 1: Gooey shapes (tab indicator + panel background) ── */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ filter: "url(#wb-goo)" }}
+          >
+            {/* Tab row */}
+            <div className="flex w-full" style={{ height: TAB_H }}>
+              {projects.map((p, i) => (
+                <div key={i} className="relative flex-1">
+                  {activeTab === i && (
+                    <motion.div
+                      layoutId="wb-tab-bg"
+                      className="absolute inset-0"
+                      style={{ backgroundColor: p.color }}
+                      transition={{ type: "spring", bounce: 0, duration: 0.42 }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Content panel solid fill — same color as active tab, merges via goo */}
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.13 }}
-              className="rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 group"
-            >
-              {/* Gradient top half */}
-              <div className={`bg-gradient-to-br ${project.gradient} p-6 sm:p-7 relative overflow-hidden`}>
-                {/* Decorative circle */}
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full" />
-                <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/10 rounded-full" />
+              className="w-full"
+              animate={{ backgroundColor: active.color }}
+              transition={{ duration: 0.3 }}
+              style={{ height: PANEL_H }}
+            />
+          </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${project.badge} backdrop-blur-sm border border-white/20`}>
-                      {project.day}
-                    </span>
-                    <span className="text-4xl drop-shadow-sm">{project.emoji}</span>
+          {/* ── Layer 2: Interactive content (no filter, sharp) ── */}
+          <div className="relative z-10 flex flex-col" style={{ height: TAB_H + PANEL_H }}>
+
+            {/* Tab labels */}
+            <div className="flex" style={{ height: TAB_H }}>
+              {projects.map((p, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTab(i)}
+                  className="flex-1 flex items-center justify-center transition-colors duration-200"
+                >
+                  <span
+                    className={`text-sm sm:text-base font-bold transition-colors duration-200 ${
+                      activeTab === i ? "text-white" : "text-slate-400 hover:text-slate-600"
+                    }`}
+                  >
+                    {p.day}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Content panel */}
+            <div className="flex-1 overflow-hidden">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
+                >
+                  {/* Left: project info */}
+                  <div className="flex-1">
+                    <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">
+                      {active.title}
+                    </h3>
+                    <p className="text-sm sm:text-base font-semibold text-white/80 mb-4">
+                      {active.tagline}
+                    </p>
+                    <p className="text-sm text-white/70 leading-relaxed max-w-md">
+                      {active.desc}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-black text-white mb-1">{project.title}</h3>
-                  <p className="text-sm font-medium text-white/80">{project.tagline}</p>
-                </div>
-              </div>
 
-              {/* White bottom half */}
-              <div className="bg-white p-6 sm:p-7">
-                <p className="text-sm text-slate-600 leading-relaxed mb-5">{project.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Right: skills */}
+                  <div className="sm:w-44 flex-shrink-0">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-3">
+                      Skills Learned
+                    </p>
+                    <div className="flex flex-wrap sm:flex-col gap-2">
+                      {active.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="text-xs font-semibold bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/25"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
 
         {/* Portfolio note */}
@@ -106,17 +168,14 @@ export default function WhatBuild() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 text-center bg-gradient-to-r from-violet-50 to-pink-50 border border-violet-100 rounded-2xl px-6 py-5 max-w-2xl mx-auto"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16 mb-4 text-center"
         >
-          <div className="flex items-center justify-center gap-2 mb-1.5">
-            <svg className="w-5 h-5 text-violet-500" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-            </svg>
-            <span className="font-bold text-slate-800 text-sm">Parents receive all 3 projects digitally on Day 3</span>
-          </div>
-          <p className="text-slate-500 text-xs">
-            A proud portfolio your child built from scratch - to keep, share, and show off forever.
+          <p className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
+            Parents receive all 3 projects digitally on Day 3
+          </p>
+          <p className="text-base sm:text-lg text-slate-500">
+            A proud portfolio your child built from scratch — to keep, share, and show off forever.
           </p>
         </motion.div>
       </div>

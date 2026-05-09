@@ -14,6 +14,8 @@ const days = [
     lightBg: "bg-emerald-50",
     textColor: "text-emerald-700",
     borderColor: "border-emerald-200",
+    glow: "#10b981",
+    conic: "conic-gradient(from 0deg, transparent 0% 60%, #6ee7b7 80%, white 90%, #6ee7b7 95%, transparent 100%)",
     sessions: [
       { time: "9:00 - 9:30", title: "Welcome & Team Formation" },
       { time: "9:30 - 10:15", title: "What is AI, Really?" },
@@ -33,6 +35,8 @@ const days = [
     lightBg: "bg-fuchsia-50",
     textColor: "text-fuchsia-700",
     borderColor: "border-fuchsia-200",
+    glow: "#e879f9",
+    conic: "conic-gradient(from 0deg, transparent 0% 60%, #f0abfc 80%, white 90%, #f0abfc 95%, transparent 100%)",
     sessions: [
       { time: "9:00 - 9:15", title: "Day 1 Recap & Energy Starter" },
       { time: "9:15 - 9:45", title: "AI Art & Images: How It Works" },
@@ -52,6 +56,8 @@ const days = [
     lightBg: "bg-blue-50",
     textColor: "text-blue-700",
     borderColor: "border-blue-200",
+    glow: "#3b82f6",
+    conic: "conic-gradient(from 0deg, transparent 0% 60%, #93c5fd 80%, white 90%, #93c5fd 95%, transparent 100%)",
     sessions: [
       { time: "9:00 - 9:15", title: "Final Day Energy Starter" },
       { time: "9:15 - 10:00", title: "AI Video Creation" },
@@ -92,9 +98,19 @@ export default function Curriculum() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative h-[420px]"
-              style={{ perspective: "1200px" }}
+              className="relative rounded-3xl p-[2.5px] overflow-hidden"
+              style={{
+                boxShadow: `0 8px 40px ${day.glow}55, 0 2px 8px rgba(0,0,0,0.15)`,
+              }}
             >
+              {/* Spinning conic gradient border */}
+              <div
+                className="stat-spin absolute w-[200%] h-[200%] pointer-events-none"
+                style={{ top: "-50%", left: "-50%", background: day.conic }}
+              />
+
+              {/* Card content */}
+              <div className="relative z-10 h-[420px] rounded-[22px] overflow-hidden" style={{ perspective: "1200px" }}>
               <motion.div
                 className="relative w-full h-full cursor-pointer"
                 animate={{ rotateY: flipped === i ? 180 : 0 }}
@@ -186,6 +202,7 @@ export default function Curriculum() {
                   </div>
                 </div>
               </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

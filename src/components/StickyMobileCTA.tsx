@@ -41,7 +41,7 @@ export default function StickyMobileCTA() {
                 href="#pricing"
                 className="flex-[2] flex items-center justify-center gap-1.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold py-3 rounded-xl transition-all cursor-pointer text-sm"
               >
-                Reserve Seat — ₹3,999
+                Reserve Seat - ₹3,999
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

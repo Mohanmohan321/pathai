@@ -44,3 +44,5 @@ next-env.d.ts
 /*.png
 /*.mp4
 /*.pdf
+
+.vercel
