@@ -1,37 +1,112 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { AnimatedTabs } from "@/components/ui/animated-tabs";
 
-const projects = [
+function TabContent({
+  image,
+  alt,
+  dayLabel,
+  title,
+  tagline,
+  desc,
+  skills,
+  accent,
+}: {
+  image: string;
+  alt: string;
+  dayLabel: string;
+  title: string;
+  tagline: string;
+  desc: string;
+  skills: string[];
+  accent: string;
+}) {
+  return (
+    <div className="grid sm:grid-cols-2 gap-5 sm:gap-8 items-center">
+      {/* Image */}
+      <div className="rounded-2xl overflow-hidden aspect-video w-full shadow-2xl">
+        <Image
+          src={image}
+          alt={alt}
+          width={600}
+          height={340}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Info */}
+      <div className="flex flex-col gap-3">
+        <span className="text-xs font-bold uppercase tracking-widest" style={{ color: accent }}>
+          {dayLabel}
+        </span>
+        <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">{title}</h3>
+        <p className="text-sm font-medium text-white/50">{tagline}</p>
+        <p className="text-sm text-white/70 leading-relaxed">{desc}</p>
+        <div className="flex flex-wrap gap-2 mt-1">
+          {skills.map((s) => (
+            <span
+              key={s}
+              className="text-xs font-medium bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/10"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const tabs = [
   {
-    day: "Day 1",
-    emoji: "📊",
-    title: "AI Presentation",
-    tagline: "Research → Outline → Publish",
-    desc: "Kids use ChatGPT to research a topic they love, structure it with AI, and design a polished 5-7 slide deck in Canva.",
-    skills: ["AI Prompting", "Research", "Canva", "Public Speaking"],
-    gradient: "from-sky-400 via-blue-500 to-blue-600",
-    badge: "bg-white/20 text-white",
+    id: "day1",
+    label: "Day 1 — Presentation",
+    content: (
+      <TabContent
+        image="/day1.jpg"
+        alt="Day 1 AI Presentation"
+        dayLabel="Day 1 Project"
+        title="AI Presentation"
+        tagline="Research → Outline → Publish"
+        desc="Kids use ChatGPT to research a topic they love, structure it with AI, and design a polished 5-7 slide deck in Canva."
+        skills={["AI Prompting", "Research", "Canva", "Public Speaking"]}
+        accent="#38bdf8"
+      />
+    ),
   },
   {
-    day: "Day 2",
-    emoji: "📚",
-    title: "AI Comic Book",
-    tagline: "Story → Illustrations → Print",
-    desc: "Students write characters and plot with AI help, then generate their own illustrations using Canva Magic Media.",
-    skills: ["Storytelling", "AI Art", "Design", "Canva"],
-    gradient: "from-fuchsia-400 via-pink-500 to-rose-500",
-    badge: "bg-white/20 text-white",
+    id: "day2",
+    label: "Day 2 — Comic Book",
+    content: (
+      <TabContent
+        image="/day2.jpg"
+        alt="Day 2 AI Comic Book"
+        dayLabel="Day 2 Project"
+        title="AI Comic Book"
+        tagline="Story → Illustrations → Print"
+        desc="Students write characters and plot with AI help, then generate their own illustrations using Canva Magic Media."
+        skills={["Storytelling", "AI Art", "Design", "Canva"]}
+        accent="#e879f9"
+      />
+    ),
   },
   {
-    day: "Day 3",
-    emoji: "🎬",
-    title: "AI Video",
-    tagline: "Script → Visuals → Premiere",
-    desc: "Using Pictory AI, students turn their Day 2 comic into a 30-60 second video with narration, music, and scenes.",
-    skills: ["Video Production", "Script Writing", "AI Tools", "Presenting"],
-    gradient: "from-amber-400 via-orange-400 to-orange-500",
-    badge: "bg-white/20 text-white",
+    id: "day3",
+    label: "Day 3 — AI Video",
+    content: (
+      <TabContent
+        image="/day3.jpg"
+        alt="Day 3 AI Video"
+        dayLabel="Day 3 Project"
+        title="AI Video"
+        tagline="Script → Visuals → Premiere"
+        desc="Using Pictory AI, students turn their Day 2 comic into a 30-60 second video with narration, music, and scenes."
+        skills={["Video Production", "Script Writing", "AI Tools", "Presenting"]}
+        accent="#fb923c"
+      />
+    ),
   },
 ];
 
@@ -55,51 +130,22 @@ export default function WhatBuild() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: i * 0.13 }}
-              className="rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 group"
-            >
-              {/* Gradient top half */}
-              <div className={`bg-gradient-to-br ${project.gradient} p-6 sm:p-7 relative overflow-hidden`}>
-                {/* Decorative circle */}
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full" />
-                <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/10 rounded-full" />
-
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${project.badge} backdrop-blur-sm border border-white/20`}>
-                      {project.day}
-                    </span>
-                    <span className="text-4xl drop-shadow-sm">{project.emoji}</span>
-                  </div>
-                  <h3 className="text-2xl font-black text-white mb-1">{project.title}</h3>
-                  <p className="text-sm font-medium text-white/80">{project.tagline}</p>
-                </div>
-              </div>
-
-              {/* White bottom half */}
-              <div className="bg-white p-6 sm:p-7">
-                <p className="text-sm text-slate-600 leading-relaxed mb-5">{project.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Dark card with animated tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="rounded-3xl overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.25)",
+          }}
+        >
+          <div className="p-6 sm:p-10">
+            <AnimatedTabs tabs={tabs} />
+          </div>
+        </motion.div>
 
         {/* Portfolio note */}
         <motion.div
@@ -107,7 +153,7 @@ export default function WhatBuild() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 text-center bg-gradient-to-r from-violet-50 to-pink-50 border border-violet-100 rounded-2xl px-6 py-5 max-w-2xl mx-auto"
+          className="mt-6 text-center bg-gradient-to-r from-violet-50 to-pink-50 border border-violet-100 rounded-2xl px-6 py-5 max-w-2xl mx-auto"
         >
           <div className="flex items-center justify-center gap-2 mb-1.5">
             <svg className="w-5 h-5 text-violet-500" viewBox="0 0 24 24" fill="currentColor">
