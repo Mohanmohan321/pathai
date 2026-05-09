@@ -23,12 +23,6 @@ const campDetails = [
   { label: "Format", value: "Offline, In-Person" },
 ];
 
-const urgencyPoints = [
-  "Only 25-30 seats per batch",
-  "First batch - early bird advantage",
-  "Camp starts May 15, 2026",
-  "Confirmed seats only via payment",
-];
 
 export default function Pricing() {
   return (
@@ -127,37 +121,35 @@ export default function Pricing() {
                 </div>
               </div>
 
-              {/* Right — Camp details + urgency */}
-              <div className="lg:col-span-2 flex flex-col divide-y divide-slate-100">
+              {/* Right — Camp info */}
+              <div className="lg:col-span-2 bg-slate-50/60 p-6 flex flex-col gap-6">
 
                 {/* Camp details */}
-                <div className="p-6">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Camp Details</p>
-                  <div className="space-y-3">
-                    {campDetails.map((detail) => (
-                      <div key={detail.label} className="flex justify-between items-center">
-                        <span className="text-sm text-slate-500">{detail.label}</span>
+                <div>
+                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Camp Details</p>
+                  <div className="space-y-0 rounded-xl overflow-hidden border border-slate-100 bg-white">
+                    {campDetails.map((detail, i) => (
+                      <div
+                        key={detail.label}
+                        className={`flex justify-between items-center px-4 py-3 ${i !== campDetails.length - 1 ? "border-b border-slate-50" : ""}`}
+                      >
+                        <span className="text-sm text-slate-400">{detail.label}</span>
                         <span className="text-sm font-semibold text-slate-800">{detail.value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Urgency */}
-                <div className="p-6 bg-rose-50/60 flex-1">
-                  <p className="text-xs font-bold text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-1.5">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Why Register Now?
-                  </p>
-                  <div className="space-y-2.5">
-                    {urgencyPoints.map((point) => (
-                      <div key={point} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 flex-shrink-0" />
-                        <span className="text-sm text-rose-700 leading-snug">{point}</span>
-                      </div>
-                    ))}
+                {/* Seats notice */}
+                <div className="rounded-xl bg-sky-50 border border-sky-100 px-4 py-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+                    <p className="text-xs font-bold text-sky-700 uppercase tracking-widest">Seats Filling Fast</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm text-sky-800 font-medium">Only 25-30 seats per batch</p>
+                    <p className="text-sm text-sky-700">First batch - early bird advantage</p>
+                    <p className="text-xs text-sky-600 mt-1 pt-2 border-t border-sky-100">Payment confirms your seat instantly</p>
                   </div>
                 </div>
 
