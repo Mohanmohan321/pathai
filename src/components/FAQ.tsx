@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     q: "Does my child need to know coding?",
-    a: "Absolutely not. Zero coding knowledge required. PATH AI focuses on creative AI use — prompting, storytelling, design, and video production. If your child can type and is curious, they're ready.",
+    a: "Absolutely not. Zero coding knowledge required. PATH AI focuses on creative AI use - prompting, storytelling, design, and video production. If your child can type and is curious, they're ready.",
   },
   {
     q: "Is AI safe for children aged 11-14?",
@@ -47,20 +47,20 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="border border-slate-200 rounded-2xl overflow-hidden bg-white"
+      className={`border-b border-slate-100 last:border-0 transition-colors duration-200 ${open ? "bg-blue-50/30" : "bg-white hover:bg-slate-50/60"}`}
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer hover:bg-slate-50 transition-colors duration-200"
+        className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left cursor-pointer"
         aria-expanded={open}
       >
         <span className="font-semibold text-slate-800 text-sm sm:text-base leading-snug">{q}</span>
         <motion.div
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0"
+          className="w-6 h-6 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 border border-blue-100"
         >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
           </svg>
         </motion.div>
@@ -75,8 +75,8 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.25 }}
             className="overflow-hidden"
           >
-            <div className="px-5 sm:px-6 pb-5 border-t border-slate-100">
-              <p className="text-sm text-slate-600 leading-relaxed pt-4">{a}</p>
+            <div className="px-6 pb-5">
+              <p className="text-sm text-slate-600 leading-relaxed">{a}</p>
             </div>
           </motion.div>
         )}
@@ -108,11 +108,58 @@ export default function FAQ() {
           </p>
         </motion.div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <FAQItem key={faq.q} q={faq.q} a={faq.a} index={i} />
-          ))}
-        </div>
+        {/* Mac-style window */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="rounded-2xl overflow-hidden border border-slate-200"
+          style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)" }}
+        >
+          {/* Title bar */}
+          <div
+            className="flex items-center gap-3 px-4 py-3 border-b border-slate-200"
+            style={{ background: "linear-gradient(to bottom, #f5f5f5, #ebebeb)" }}
+          >
+            <div className="flex items-center gap-1.5 flex-shrink-0">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F57] border border-[#E0443E]" />
+              <div className="w-3 h-3 rounded-full bg-[#FEBC2E] border border-[#DFA01C]" />
+              <div className="w-3 h-3 rounded-full bg-[#28C840] border border-[#1BAD2F]" />
+            </div>
+            <div className="flex-1 flex items-center justify-center">
+              <div
+                className="bg-white border border-slate-200 rounded-md px-4 py-1.5 text-xs font-semibold text-slate-700 flex items-center gap-2"
+                style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.08)" }}
+              >
+                <svg className="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Frequently Asked Questions
+              </div>
+            </div>
+            <div className="w-16 flex-shrink-0" />
+          </div>
+
+          {/* Window body - accordion */}
+          <div>
+            {faqs.map((faq, i) => (
+              <FAQItem key={faq.q} q={faq.q} a={faq.a} index={i} />
+            ))}
+          </div>
+
+          {/* Status bar */}
+          <div
+            className="flex items-center justify-between px-6 py-2.5 border-t border-slate-200"
+            style={{ background: "linear-gradient(to bottom, #f5f5f5, #ebebeb)" }}
+          >
+            <span className="text-[11px] text-slate-400">8 questions answered</span>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[11px] text-slate-500 font-semibold">Still curious? Chat with us</span>
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA after FAQ */}
         <motion.div
