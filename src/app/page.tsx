@@ -8,14 +8,13 @@ import WhyDifferent from "@/components/WhyDifferent";
 import WhatBuild from "@/components/WhatBuild";
 import Curriculum from "@/components/Curriculum";
 import Tools from "@/components/Tools";
+import Venue from "@/components/Venue";
 import TrustSafety from "@/components/TrustSafety";
 import Assessment from "@/components/Assessment";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import StickyMobileCTA from "@/components/StickyMobileCTA";
-
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
@@ -30,6 +29,7 @@ export default function Home() {
         <WhatBuild />
         <Curriculum />
         <Tools />
+        <Venue />
         <TrustSafety />
         <Assessment />
         <Pricing />
@@ -37,7 +37,6 @@ export default function Home() {
         <FinalCTA />
       </main>
       <Footer />
-      <StickyMobileCTA />
     </div>
   );
 }

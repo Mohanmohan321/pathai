@@ -27,7 +27,7 @@ const painPoints = [
     iconColor: "text-pink-600",
     iconBg: "bg-pink-100",
     problem: "AI feels overwhelming to navigate",
-    solution: "Our curriculum is built for grades 6–9. No overwhelm — just creative exploration at their level.",
+    solution: "Our curriculum is built for grades 6-9. No overwhelm - just creative exploration at their level.",
     solutionColor: "text-emerald-700",
     solutionBg: "bg-emerald-50",
     checkColor: "bg-emerald-500",

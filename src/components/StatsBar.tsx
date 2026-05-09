@@ -6,7 +6,7 @@ const stats = [
   {
     number: "3",
     label: "Days Camp",
-    sub: "May 15–17, 2026",
+    sub: "May 15-17, 2026",
     from: "from-sky-400",
     to: "to-blue-600",
     shadow: "shadow-sky-200",

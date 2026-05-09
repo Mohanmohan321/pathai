@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const metaPills = [
-  { label: "5–10 Minutes", icon: "⏱" },
+  { label: "5-10 Minutes", icon: "⏱" },
   { label: "Parent Assisted", icon: "👨‍👩‍👧" },
   { label: "Beginner Friendly", icon: "🌟" },
   { label: "No Coding Needed", icon: "✅" },
@@ -40,7 +40,7 @@ export default function Assessment() {
               Start the Assessment
             </h2>
             <p className="text-slate-600 text-center mb-6 leading-relaxed">
-              Help us understand your child&apos;s creativity, curiosity, and learning style —
+              Help us understand your child&apos;s creativity, curiosity, and learning style -
               so we can make their experience even better.
             </p>
 
@@ -96,7 +96,7 @@ export default function Assessment() {
             </motion.a>
 
             <p className="text-center text-xs text-slate-400 mt-3">
-              Opens in a new tab · Takes 5–10 minutes · Completely free
+              Opens in a new tab · Takes 5-10 minutes · Completely free
             </p>
           </div>
         </motion.div>

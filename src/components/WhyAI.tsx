@@ -12,7 +12,7 @@ const cards = [
     iconBg: "bg-gradient-to-br from-sky-400 to-blue-600",
     topBar: "from-sky-400 to-blue-600",
     title: "AI is the Skill of This Decade",
-    body: "Like typing before it — AI is now the must-have skill. Kids who create with AI today will lead tomorrow.",
+    body: "Like typing before it - AI is now the must-have skill. Kids who create with AI today will lead tomorrow.",
   },
   {
     icon: (
@@ -24,7 +24,7 @@ const cards = [
     iconBg: "bg-gradient-to-br from-orange-400 to-red-500",
     topBar: "from-orange-400 to-red-500",
     title: "Every Future Job Will Need It",
-    body: "85% of 2030 jobs don't exist yet — but they'll all work alongside AI. Give your child that edge right now.",
+    body: "85% of 2030 jobs don't exist yet - but they'll all work alongside AI. Give your child that edge right now.",
   },
   {
     icon: (
@@ -35,7 +35,7 @@ const cards = [
     iconBg: "bg-gradient-to-br from-emerald-400 to-green-600",
     topBar: "from-emerald-400 to-green-600",
     title: "Creators Beat Consumers",
-    body: "Most kids scroll through AI content all day. PATH AI flips the switch — turning them into builders with real AI tools.",
+    body: "Most kids scroll through AI content all day. PATH AI flips the switch - turning them into builders with real AI tools.",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function WhyAI() {
             <span className="text-gradient">Written in AI</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
-            The world is changing. The kids who understand AI won&apos;t just survive — they&apos;ll lead.
+            The world is changing. The kids who understand AI won&apos;t just survive - they&apos;ll lead.
           </p>
         </motion.div>
 

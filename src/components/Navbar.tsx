@@ -168,7 +168,7 @@ export default function Navbar() {
                       className="bg-blue-600 text-white text-center font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Register Now – ₹3,999
+                      Register Now - ₹3,999
                     </a>
                   </div>
                 </nav>

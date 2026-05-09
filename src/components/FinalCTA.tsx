@@ -59,7 +59,7 @@ export default function FinalCTA() {
           className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 text-rose-700 text-sm font-semibold px-4 py-2 rounded-full mb-8"
         >
           <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
-          Only 25–30 seats available · May 15–17, 2026
+          Only 25-30 seats available · May 15-17, 2026
         </motion.div>
 
         <motion.div
@@ -101,7 +101,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-6 text-sm text-slate-500"
         >
-          PATH AI &mdash; Powered by SPI Edge &nbsp;·&nbsp; Building Future-Ready Humans
+          PATH AI - Powered by SPI Edge &nbsp;·&nbsp; Building Future-Ready Humans
         </motion.p>
       </div>
     </section>

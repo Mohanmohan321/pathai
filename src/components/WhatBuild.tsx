@@ -8,7 +8,7 @@ const projects = [
     emoji: "📊",
     title: "AI Presentation",
     tagline: "Research → Outline → Publish",
-    desc: "Kids use ChatGPT to research a topic they love, structure it with AI, and design a polished 5–7 slide deck in Canva.",
+    desc: "Kids use ChatGPT to research a topic they love, structure it with AI, and design a polished 5-7 slide deck in Canva.",
     skills: ["AI Prompting", "Research", "Canva", "Public Speaking"],
     gradient: "from-sky-400 via-blue-500 to-blue-600",
     badge: "bg-white/20 text-white",
@@ -28,7 +28,7 @@ const projects = [
     emoji: "🎬",
     title: "AI Video",
     tagline: "Script → Visuals → Premiere",
-    desc: "Using Pictory AI, students turn their Day 2 comic into a 30–60 second video with narration, music, and scenes.",
+    desc: "Using Pictory AI, students turn their Day 2 comic into a 30-60 second video with narration, music, and scenes.",
     skills: ["Video Production", "Script Writing", "AI Tools", "Presenting"],
     gradient: "from-amber-400 via-orange-400 to-orange-500",
     badge: "bg-white/20 text-white",
@@ -119,7 +119,7 @@ export default function WhatBuild() {
             <span className="font-bold text-slate-800 text-sm">Parents receive all 3 projects digitally on Day 3</span>
           </div>
           <p className="text-slate-500 text-xs">
-            A proud portfolio your child built from scratch — to keep, share, and show off forever.
+            A proud portfolio your child built from scratch - to keep, share, and show off forever.
           </p>
         </motion.div>
       </div>

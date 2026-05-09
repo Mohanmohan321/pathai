@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const comparisons = [
-  { factor: "Duration", them: "8–16 sessions over weeks", us: "3 intensive days" },
+  { factor: "Duration", them: "8-16 sessions over weeks", us: "3 intensive days" },
   { factor: "Format", them: "Online & passive", us: "Offline, in-person" },
-  { factor: "Focus", them: "Coding & technical AI", us: "Creative AI — no code" },
+  { factor: "Focus", them: "Coding & technical AI", us: "Creative AI - no code" },
   { factor: "Output", them: "Certificate only", us: "3 real projects + portfolio" },
   { factor: "Style", them: "Lectures & demos", us: "Build-first, learn by doing" },
-  { factor: "Price", them: "₹2,000–22,500", us: "₹3,999 all-inclusive" },
+  { factor: "Price", them: "₹2,000-22,500", us: "₹3,999 all-inclusive" },
 ];
 
 export default function WhyDifferent() {

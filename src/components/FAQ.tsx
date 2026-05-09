@@ -9,8 +9,8 @@ const faqs = [
     a: "Absolutely not. Zero coding knowledge required. PATH AI focuses on creative AI use — prompting, storytelling, design, and video production. If your child can type and is curious, they're ready.",
   },
   {
-    q: "Is AI safe for children aged 11–14?",
-    a: "Yes. All AI tool usage is supervised by trained facilitators. For students under 13, we use shared or teacher-managed accounts. We also teach age-appropriate AI ethics — how to use AI responsibly and the difference between learning with AI vs copying from it.",
+    q: "Is AI safe for children aged 11-14?",
+    a: "Yes. All AI tool usage is supervised by trained facilitators. For students under 13, we use shared or teacher-managed accounts. We also teach age-appropriate AI ethics - how to use AI responsibly and the difference between learning with AI vs copying from it.",
   },
   {
     q: "What device does my child need?",
@@ -18,15 +18,15 @@ const faqs = [
   },
   {
     q: "Is this camp online or offline?",
-    a: "Fully offline and in-person. We believe the best learning happens face-to-face, in teams, with real facilitators. The camp runs May 15–17, 2026 from 9 AM to 1 PM each day.",
+    a: "Fully offline and in-person. We believe the best learning happens face-to-face, in teams, with real facilitators. The camp runs May 15-17, 2026 from 9 AM to 1 PM each day.",
   },
   {
     q: "Will parents receive their child's projects?",
-    a: "Yes! All 3 projects — the AI presentation, the comic book, and the video — are shared digitally with parents at the end of Day 3. It's a real portfolio your child built themselves.",
+    a: "Yes! All 3 projects - the AI presentation, the comic book, and the video - are shared digitally with parents at the end of Day 3. It's a real portfolio your child built themselves.",
   },
   {
     q: "My child is shy. Will they be okay?",
-    a: "Absolutely. The camp is designed to be inclusive and supportive. Students work in small teams of 4–5, which naturally reduces pressure. Facilitators are trained to include every student. Many shy students end up being the most creatively expressive by Day 3.",
+    a: "Absolutely. The camp is designed to be inclusive and supportive. Students work in small teams of 4-5, which naturally reduces pressure. Facilitators are trained to include every student. Many shy students end up being the most creatively expressive by Day 3.",
   },
   {
     q: "What if my child doesn't enjoy it?",
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: "How is PATH AI different from other coding or AI camps?",
-    a: "Most camps are long (8–16 sessions), online, and coding-heavy. PATH AI is 3 days, fully offline, and focuses on creative AI use. Students walk away with a real portfolio — not just a certificate.",
+    a: "Most camps are long (8-16 sessions), online, and coding-heavy. PATH AI is 3 days, fully offline, and focuses on creative AI use. Students walk away with a real portfolio - not just a certificate.",
   },
 ];
 
