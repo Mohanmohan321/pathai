@@ -51,28 +51,6 @@ export default function VideoSection() {
         </motion.div>
 
         {/* Bottom trust pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap gap-3 justify-center mt-8"
-        >
-          {[
-            { icon: "🎨", text: "100% Hands-On" },
-            { icon: "🚫", text: "Zero Coding" },
-            { icon: "🏆", text: "Real Projects" },
-            { icon: "📅", text: "May 15–17, 2026" },
-          ].map((pill) => (
-            <span
-              key={pill.text}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-violet-50 hover:text-violet-700 transition-colors px-4 py-2 rounded-full"
-            >
-              <span>{pill.icon}</span>
-              {pill.text}
-            </span>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
