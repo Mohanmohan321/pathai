@@ -73,9 +73,6 @@ export default function Tools() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-xs font-semibold text-violet-600 uppercase tracking-widest bg-violet-50 px-4 py-1.5 rounded-full mb-4">
-            AI Tools
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Real Tools.{" "}
             <span className="text-gradient">Real Skills.</span>

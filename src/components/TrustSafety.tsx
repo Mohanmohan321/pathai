@@ -25,9 +25,6 @@ export default function TrustSafety() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-widest bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-4">
-            Everything Included
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 leading-tight">
             What&apos;s Included in{" "}
             <span className="text-gradient">&#8377;3,999</span>

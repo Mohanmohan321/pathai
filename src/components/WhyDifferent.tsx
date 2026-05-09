@@ -22,9 +22,6 @@ export default function WhyDifferent() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-xs font-bold text-sky-600 uppercase tracking-widest bg-sky-50 border border-sky-100 px-4 py-1.5 rounded-full mb-4">
-            Why PATH AI
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Not Your Average{" "}
             <span className="text-gradient">Camp</span>

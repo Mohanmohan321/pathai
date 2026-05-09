@@ -25,15 +25,6 @@ export default function Assessment() {
           <div className="h-1.5 bg-gradient-to-r from-blue-500 via-violet-500 to-teal-400" />
 
           <div className="p-7 sm:p-10">
-            {/* Badge */}
-            <div className="flex justify-center mb-6">
-              <span className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full">
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-                Student Assessment
-              </span>
-            </div>
 
             {/* Heading */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 text-center mb-3 leading-tight">

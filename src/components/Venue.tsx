@@ -24,9 +24,6 @@ export default function Venue() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-xs font-semibold text-amber-600 uppercase tracking-widest bg-amber-50 border border-amber-100 px-4 py-1.5 rounded-full mb-4">
-            Venue Partner
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Where the{" "}
             <span className="text-gradient">Camp Happens</span>

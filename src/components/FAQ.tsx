@@ -96,9 +96,6 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-xs font-semibold text-slate-600 uppercase tracking-widest bg-slate-100 px-4 py-1.5 rounded-full mb-4">
-            FAQ
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Questions?{" "}
             <span className="text-gradient">We&apos;ve Got Answers</span>
