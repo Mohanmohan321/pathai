@@ -55,7 +55,7 @@ export default function Pricing() {
             style={{ boxShadow: "0 8px 40px rgba(14,165,233,0.10), 0 2px 8px rgba(0,0,0,0.06)" }}
           >
             <div className="h-1.5 bg-gradient-to-r from-sky-400 via-blue-500 to-violet-500" />
-            <div className="p-7 sm:p-8">
+            <div className="p-6 sm:p-8">
               {/* Badges */}
               <div className="flex items-center gap-2 mb-5">
                 <span className="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">
@@ -113,59 +113,43 @@ export default function Pricing() {
             </div>
           </motion.div>
 
-          {/* Right column */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          {/* Right column — single unified card */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 overflow-hidden flex flex-col"
+            style={{ boxShadow: "0 8px 40px rgba(14,165,233,0.10), 0 2px 8px rgba(0,0,0,0.06)" }}
+          >
+            <div className="h-1.5 bg-gradient-to-r from-sky-400 via-blue-500 to-violet-500" />
 
-            {/* Camp details card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className="bg-white rounded-3xl border border-slate-200 overflow-hidden"
-              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}
-            >
-              <div className="h-1.5 bg-gradient-to-r from-violet-400 to-sky-400" />
-              <div className="p-5">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Camp Details</p>
-                <div className="space-y-0">
-                  {campDetails.map((detail, i) => (
-                    <div
-                      key={detail.label}
-                      className={`flex justify-between items-center py-2.5 ${i !== campDetails.length - 1 ? "border-b border-slate-50" : ""}`}
-                    >
-                      <span className="text-sm text-slate-400">{detail.label}</span>
-                      <span className="text-sm font-semibold text-slate-800">{detail.value}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* Camp details */}
+            <div className="p-5 flex-1">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Camp Details</p>
+              <div className="space-y-0">
+                {campDetails.map((detail, i) => (
+                  <div
+                    key={detail.label}
+                    className={`flex justify-between items-center py-2.5 ${i !== campDetails.length - 1 ? "border-b border-slate-50" : ""}`}
+                  >
+                    <span className="text-sm text-slate-400">{detail.label}</span>
+                    <span className="text-sm font-semibold text-slate-800">{detail.value}</span>
+                  </div>
+                ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Seats notice card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.18 }}
-              className="bg-white rounded-3xl border border-sky-100 overflow-hidden"
-              style={{ boxShadow: "0 4px 20px rgba(14,165,233,0.10)" }}
-            >
-              <div className="h-1.5 bg-gradient-to-r from-sky-400 to-blue-500" />
-              <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
-                  <p className="text-xs font-bold text-sky-700 uppercase tracking-widest">Seats Filling Fast</p>
-                </div>
-                <p className="text-sm font-semibold text-slate-800 mb-1">Only 25-30 seats per batch</p>
-                <p className="text-sm text-slate-500 mb-3">First batch - early bird advantage</p>
-                <div className="text-xs text-sky-600 bg-sky-50 border border-sky-100 rounded-xl px-3 py-2">
-                  Payment confirms your seat instantly
-                </div>
+            {/* Seats notice — same card, separated by a border */}
+            <div className="border-t border-slate-100 bg-sky-50/50 p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
+                <p className="text-xs font-bold text-sky-700 uppercase tracking-widest">Seats Filling Fast</p>
               </div>
-            </motion.div>
-
-          </div>
+              <p className="text-sm font-semibold text-slate-800 mb-1">Only 25-30 seats per batch</p>
+              <p className="text-sm text-slate-500">First batch - early bird advantage</p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
