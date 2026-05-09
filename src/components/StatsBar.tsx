@@ -47,10 +47,7 @@ export default function StatsBar() {
               transition={{ duration: 0.45, delay: i * 0.1 }}
               className="stat-outer"
             >
-              {/* Moving dot */}
-              <div className="stat-dot" style={{ animationDelay: stat.dotDelay }} />
-
-              {/* Card */}
+              {/* Card — rendered first so dot appears above it */}
               <div
                 className="stat-card p-6 sm:p-7 text-white text-center"
                 style={{ background: stat.gradient }}
@@ -71,6 +68,9 @@ export default function StatsBar() {
                   <div className="text-xs text-white/70 mt-1">{stat.sub}</div>
                 </div>
               </div>
+
+              {/* Moving dot — rendered after card so it paints on top */}
+              <div className="stat-dot" style={{ animationDelay: stat.dotDelay }} />
             </motion.div>
           ))}
         </div>
