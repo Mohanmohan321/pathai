@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useScreenSize } from "@/hooks/use-screen-size";
 
 const days = [
   {
@@ -71,6 +72,8 @@ const days = [
 
 export default function Curriculum() {
   const [flipped, setFlipped] = useState<number | null>(null);
+  const screenSize = useScreenSize();
+  const isMobile = screenSize.lessThan("md");
 
   return (
     <section id="curriculum" className="py-20 sm:py-28 bg-white">
@@ -103,11 +106,13 @@ export default function Curriculum() {
                 boxShadow: `0 8px 40px ${day.glow}55, 0 2px 8px rgba(0,0,0,0.15)`,
               }}
             >
-              {/* Spinning conic gradient border */}
-              <div
-                className="stat-spin absolute w-[200%] h-[200%] pointer-events-none"
-                style={{ top: "-50%", left: "-50%", background: day.conic }}
-              />
+              {/* Spinning conic gradient border — desktop only */}
+              {!isMobile && (
+                <div
+                  className="stat-spin absolute w-[200%] h-[200%] pointer-events-none"
+                  style={{ top: "-50%", left: "-50%", background: day.conic }}
+                />
+              )}
 
               {/* Card content */}
               <div className="relative z-10 h-[420px] rounded-[22px] overflow-hidden" style={{ perspective: "1200px" }}>

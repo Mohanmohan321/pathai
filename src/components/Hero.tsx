@@ -102,24 +102,26 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col overflow-hidden bg-white pt-16"
       onMouseMove={handleMouseMove}
     >
-      {/* Grid Layer 1 — subtle always-visible */}
-      <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-      </div>
+      {/* Grid layers — desktop only (useAnimationFrame is too heavy on mobile) */}
+      {isDesktop && (
+        <>
+          <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
+            <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+          </div>
+          <motion.div
+            className="absolute inset-0 z-0 opacity-50 pointer-events-none"
+            style={{ maskImage, WebkitMaskImage: maskImage }}
+          >
+            <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+          </motion.div>
+        </>
+      )}
 
-      {/* Grid Layer 2 — vivid flashlight on hover */}
-      <motion.div
-        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
-        style={{ maskImage, WebkitMaskImage: maskImage }}
-      >
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-      </motion.div>
-
-      {/* Colour orbs */}
+      {/* Colour orbs — smaller blur radius on mobile to reduce GPU composite layers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-sky-200 opacity-40 blur-[130px]" />
-        <div className="absolute top-10 -right-32 w-[500px] h-[500px] rounded-full bg-amber-100 opacity-50 blur-[110px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[280px] h-[280px] rounded-full bg-orange-200 opacity-40 blur-[80px]" />
+        <div className="absolute -top-40 -left-40 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-sky-200 opacity-30 sm:opacity-40 blur-[60px] sm:blur-[130px]" />
+        <div className="absolute top-10 -right-32 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-amber-100 opacity-40 sm:opacity-50 blur-[50px] sm:blur-[110px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full bg-orange-200 opacity-30 sm:opacity-40 blur-[40px] sm:blur-[80px]" />
       </div>
 
       {/* Main content — z-10 keeps it above grid/orbs */}

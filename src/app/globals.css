@@ -91,3 +91,14 @@ h1, h2, h3, h4, h5, h6 {
   backface-visibility: hidden;
 }
 
+/* On touch devices: pause all spinning to save GPU */
+@media (hover: none) and (pointer: coarse) {
+  .stat-spin {
+    animation-play-state: paused;
+  }
+  /* Smooth scroll is handled natively on mobile */
+  html {
+    scroll-behavior: auto;
+  }
+}
+

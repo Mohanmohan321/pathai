@@ -32,21 +32,53 @@ const projects = [
   },
 ];
 
-const TAB_H = 52; // px — tab bar height
+const TAB_H = 52;
+
+function ContentPanel({ active }: { active: typeof projects[0] }) {
+  return (
+    <div className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10">
+      <div className="flex-1">
+        <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">
+          {active.title}
+        </h3>
+        <p className="text-sm sm:text-base font-semibold text-white/80 mb-4">
+          {active.tagline}
+        </p>
+        <p className="text-sm text-white/70 leading-relaxed max-w-md">
+          {active.desc}
+        </p>
+      </div>
+      <div className="sm:w-44 flex-shrink-0">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-3">
+          Skills Learned
+        </p>
+        <div className="flex flex-wrap sm:flex-col gap-2">
+          {active.skills.map((skill) => (
+            <span
+              key={skill}
+              className="text-xs font-semibold bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/25"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function WhatBuild() {
   const [activeTab, setActiveTab] = useState(0);
   const screenSize = useScreenSize();
   const active = projects[activeTab];
-  // More height on mobile because content stacks vertically
-  const PANEL_H = screenSize.lessThan("sm") ? 370 : screenSize.lessThan("md") ? 320 : 280;
+  const isMobile = screenSize.lessThan("md");
+  const PANEL_H = screenSize.lessThan("sm") ? 340 : 280;
 
   return (
     <section className="py-16 sm:py-24 bg-white">
-      <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 6 : 10} />
+      {!isMobile && <GooeyFilter id="wb-goo" strength={10} />}
 
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,106 +95,107 @@ export default function WhatBuild() {
           </p>
         </motion.div>
 
-        {/* Tab + Panel */}
-        <div className="relative" style={{ height: TAB_H + PANEL_H }}>
-
-          {/* ── Layer 1: Gooey shapes (tab indicator + panel background) ── */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ filter: "url(#wb-goo)" }}
-          >
+        {/* ── Mobile: flat tabs (no gooey, no clipping, no GPU filter) ── */}
+        {isMobile && (
+          <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.12)" }}>
             {/* Tab row */}
-            <div className="flex w-full" style={{ height: TAB_H }}>
-              {projects.map((p, i) => (
-                <div key={i} className="relative flex-1">
-                  {activeTab === i && (
-                    <motion.div
-                      layoutId="wb-tab-bg"
-                      className="absolute inset-0"
-                      style={{ backgroundColor: p.color }}
-                      transition={{ type: "spring", bounce: 0, duration: 0.42 }}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Content panel solid fill — same color as active tab, merges via goo */}
-            <motion.div
-              className="w-full"
-              animate={{ backgroundColor: active.color }}
-              transition={{ duration: 0.3 }}
-              style={{ height: PANEL_H }}
-            />
-          </div>
-
-          {/* ── Layer 2: Interactive content (no filter, sharp) ── */}
-          <div className="relative z-10 flex flex-col" style={{ height: TAB_H + PANEL_H }}>
-
-            {/* Tab labels */}
-            <div className="flex" style={{ height: TAB_H }}>
+            <div className="flex">
               {projects.map((p, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveTab(i)}
-                  className="flex-1 flex items-center justify-center transition-colors duration-200"
+                  className="flex-1 py-3.5 text-sm font-bold transition-colors duration-200"
+                  style={{
+                    backgroundColor: activeTab === i ? p.color : "#f8fafc",
+                    color: activeTab === i ? "white" : "#94a3b8",
+                  }}
                 >
-                  <span
-                    className={`text-sm sm:text-base font-bold transition-colors duration-200 ${
-                      activeTab === i ? "text-white" : "text-slate-400 hover:text-slate-600"
-                    }`}
-                  >
-                    {p.day}
-                  </span>
+                  {p.day}
                 </button>
               ))}
             </div>
+            {/* Panel */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                style={{ backgroundColor: active.color }}
+              >
+                <ContentPanel active={active} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        )}
 
-            {/* Content panel */}
-            <div className="flex-1 overflow-hidden">
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
-                >
-                  {/* Left: project info */}
-                  <div className="flex-1">
-                    <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">
-                      {active.title}
-                    </h3>
-                    <p className="text-sm sm:text-base font-semibold text-white/80 mb-4">
-                      {active.tagline}
-                    </p>
-                    <p className="text-sm text-white/70 leading-relaxed max-w-md">
-                      {active.desc}
-                    </p>
+        {/* ── Desktop: gooey morphing tabs ── */}
+        {!isMobile && (
+          <div className="relative" style={{ height: TAB_H + PANEL_H }}>
+            {/* Layer 1: Gooey shapes */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ filter: "url(#wb-goo)" }}
+            >
+              <div className="flex w-full" style={{ height: TAB_H }}>
+                {projects.map((p, i) => (
+                  <div key={i} className="relative flex-1">
+                    {activeTab === i && (
+                      <motion.div
+                        layoutId="wb-tab-bg"
+                        className="absolute inset-0"
+                        style={{ backgroundColor: p.color }}
+                        transition={{ type: "spring", bounce: 0, duration: 0.42 }}
+                      />
+                    )}
                   </div>
+                ))}
+              </div>
+              <motion.div
+                className="w-full"
+                animate={{ backgroundColor: active.color }}
+                transition={{ duration: 0.3 }}
+                style={{ height: PANEL_H }}
+              />
+            </div>
 
-                  {/* Right: skills */}
-                  <div className="sm:w-44 flex-shrink-0">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-3">
-                      Skills Learned
-                    </p>
-                    <div className="flex flex-wrap sm:flex-col gap-2">
-                      {active.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="text-xs font-semibold bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/25"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+            {/* Layer 2: Content (sharp, no filter) */}
+            <div className="relative z-10 flex flex-col" style={{ height: TAB_H + PANEL_H }}>
+              <div className="flex" style={{ height: TAB_H }}>
+                {projects.map((p, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveTab(i)}
+                    className="flex-1 flex items-center justify-center transition-colors duration-200"
+                  >
+                    <span
+                      className={`text-sm sm:text-base font-bold transition-colors duration-200 ${
+                        activeTab === i ? "text-white" : "text-slate-400 hover:text-slate-600"
+                      }`}
+                    >
+                      {p.day}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="h-full"
+                  >
+                    <ContentPanel active={active} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Portfolio note */}
         <motion.div
