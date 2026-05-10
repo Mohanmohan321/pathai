@@ -66,17 +66,12 @@ export default function PainPoints() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative rounded-3xl p-[2.5px] overflow-hidden cursor-default"
+              className="relative rounded-3xl overflow-hidden cursor-default"
               style={{
-                boxShadow: `0 8px 40px ${item.glow}45, 0 2px 8px rgba(0,0,0,0.08)`,
+                border: `2px solid ${item.glow}40`,
+                boxShadow: `0 8px 40px ${item.glow}40, 0 2px 8px rgba(0,0,0,0.08)`,
               }}
             >
-              {/* Spinning conic border */}
-              <div
-                className="stat-spin absolute w-[200%] h-[200%] pointer-events-none"
-                style={{ top: "-50%", left: "-50%", background: item.conic }}
-              />
-
               {/* Card */}
               <div className="relative z-10 rounded-[22px] overflow-hidden">
                 {/* Gradient header — large problem quote */}

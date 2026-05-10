@@ -42,7 +42,7 @@ export default function WhatBuild() {
 
   return (
     <section className="py-16 sm:py-24 bg-white">
-      <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 8 : 14} />
+      <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 6 : 10} />
 
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
         {/* Heading */}

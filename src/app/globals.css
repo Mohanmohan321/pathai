@@ -85,5 +85,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stat-spin {
-  animation: spin-border 2.5s linear infinite;
+  animation: spin-border 5s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
+
