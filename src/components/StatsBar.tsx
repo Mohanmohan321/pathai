@@ -10,18 +10,17 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 
   useEffect(() => {
     if (!inView) return;
-    let current = 0;
-    const step = to / (1200 / 16);
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= to) {
-        setValue(to);
-        clearInterval(timer);
-      } else {
-        setValue(Math.floor(current));
-      }
-    }, 16);
-    return () => clearInterval(timer);
+    const duration = 1200;
+    const start = performance.now();
+    let rafId: number;
+    function tick(now: number) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * to));
+      if (progress < 1) rafId = requestAnimationFrame(tick);
+    }
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, [inView, to]);
 
   return <span ref={ref}>{value}{suffix}</span>;

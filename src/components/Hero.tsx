@@ -31,6 +31,14 @@ function GridPattern({ offsetX, offsetY }: { offsetX: any; offsetY: any }) {
   );
 }
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 768);
+  }, []);
+  return isDesktop;
+}
+
 function useCountdown(target: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -69,10 +77,12 @@ function CountdownBox({ value, label }: { value: number; label: string }) {
 export default function Hero() {
   const campStart = new Date("2026-05-15T09:00:00+05:30");
   const timeLeft = useCountdown(campStart);
+  const isDesktop = useIsDesktop();
 
   const gridOffsetX = useMotionValue(0);
   const gridOffsetY = useMotionValue(0);
   useAnimationFrame(() => {
+    if (!isDesktop) return;
     gridOffsetX.set((gridOffsetX.get() + 0.3) % GRID_SIZE);
     gridOffsetY.set((gridOffsetY.get() + 0.3) % GRID_SIZE);
   });
@@ -223,7 +233,7 @@ export default function Hero() {
                 className="relative z-10"
               >
                 <motion.div
-                  animate={{ y: [-8, 8, -8] }}
+                  animate={isDesktop ? { y: [-8, 8, -8] } : {}}
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                 >
                   <Image
@@ -245,7 +255,7 @@ export default function Hero() {
                 className="absolute z-20 top-4 left-4 sm:left-0"
               >
                 <motion.div
-                  animate={{ y: [-4, 4, -4] }}
+                  animate={isDesktop ? { y: [-4, 4, -4] } : {}}
                   transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
                   className="bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >
@@ -260,7 +270,7 @@ export default function Hero() {
                 className="absolute z-20 bottom-8 right-4 sm:right-0"
               >
                 <motion.div
-                  animate={{ y: [4, -4, 4] }}
+                  animate={isDesktop ? { y: [4, -4, 4] } : {}}
                   transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
                   className="bg-violet-50 border border-violet-200 text-violet-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >
@@ -275,7 +285,7 @@ export default function Hero() {
                 className="absolute z-20 top-1/2 right-2 sm:right-[-10px]"
               >
                 <motion.div
-                  animate={{ y: [-5, 5, -5] }}
+                  animate={isDesktop ? { y: [-5, 5, -5] } : {}}
                   transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut" }}
                   className="bg-sky-50 border border-sky-200 text-sky-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >

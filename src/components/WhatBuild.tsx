@@ -32,13 +32,14 @@ const projects = [
   },
 ];
 
-const TAB_H = 52;   // px — tab bar height
-const PANEL_H = 280; // px — content panel height
+const TAB_H = 52; // px — tab bar height
 
 export default function WhatBuild() {
   const [activeTab, setActiveTab] = useState(0);
   const screenSize = useScreenSize();
   const active = projects[activeTab];
+  // More height on mobile because content stacks vertically
+  const PANEL_H = screenSize.lessThan("sm") ? 370 : screenSize.lessThan("md") ? 320 : 280;
 
   return (
     <section className="py-16 sm:py-24 bg-white">
@@ -122,10 +123,10 @@ export default function WhatBuild() {
               <AnimatePresence mode="popLayout">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                   className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
                 >
                   {/* Left: project info */}
