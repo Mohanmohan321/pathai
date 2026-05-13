@@ -9,9 +9,8 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Native momentum scrolling on touch devices is already smooth.
-    // Lenis adds JS overhead on mobile that causes jank.
-    if (window.innerWidth < 768 || "ontouchstart" in window) return;
+    // Lenis on touch devices causes double-scroll jank — use native scroll instead
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const lenis = new Lenis({
       duration: 0.9,

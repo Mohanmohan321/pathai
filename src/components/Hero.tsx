@@ -102,18 +102,22 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col overflow-hidden bg-white pt-16"
       onMouseMove={handleMouseMove}
     >
-      {/* Grid Layer 1 — subtle always-visible */}
-      <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-      </div>
+      {/* Grid Layer 1 — desktop only (animated SVG is expensive on mobile) */}
+      {isDesktop && (
+        <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
+          <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+        </div>
+      )}
 
-      {/* Grid Layer 2 — vivid flashlight on hover */}
-      <motion.div
-        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
-        style={{ maskImage, WebkitMaskImage: maskImage }}
-      >
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-      </motion.div>
+      {/* Grid Layer 2 — vivid flashlight on hover, desktop only */}
+      {isDesktop && (
+        <motion.div
+          className="absolute inset-0 z-0 opacity-50 pointer-events-none"
+          style={{ maskImage, WebkitMaskImage: maskImage }}
+        >
+          <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+        </motion.div>
+      )}
 
       {/* Colour orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
