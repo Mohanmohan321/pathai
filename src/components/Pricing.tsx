@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const included = [
-  "3-Day Intensive Camp (May 15–17)",
+  "3-Day Intensive Camp (May 18–20)",
   "12 Hours of Guided Learning",
   "All AI Tool Access",
   "Daily Snacks Included",
@@ -16,9 +16,9 @@ const included = [
 ];
 
 const campDetails = [
-  { label: "Dates", value: "May 15–17, 2026" },
+  { label: "Dates", value: "May 18–20, 2026" },
   { label: "Timing", value: "9:00 AM – 1:00 PM" },
-  { label: "Grades", value: "6–9  (Ages 11–14)" },
+  { label: "Grades", value: "5–9  (Ages 10–14)" },
   { label: "Batch Size", value: "25–30 students" },
   { label: "Format", value: "Offline, In-Person" },
   { label: "Venue", value: "Mylapore, Chennai" },
@@ -92,7 +92,7 @@ export default function Pricing() {
             {/* CTA */}
             <div className="flex-shrink-0 text-center">
               <motion.a
-                href="https://wa.me/919025439428?text=Hi%2C%20I%20want%20to%20register%20my%20child%20for%20PATH%20AI%20Summer%20Camp"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04 }}
@@ -105,7 +105,7 @@ export default function Pricing() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </motion.a>
-              <p className="text-xs text-slate-500 mt-2">Message us on WhatsApp · Payment confirms seat</p>
+              <p className="text-xs text-slate-500 mt-2">Fill the form · Payment confirms seat</p>
             </div>
           </div>
         </motion.div>

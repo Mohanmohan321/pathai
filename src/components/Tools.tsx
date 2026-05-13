@@ -64,7 +64,7 @@ const tools = [
 
 export default function Tools() {
   return (
-    <section id="tools" className="py-20 sm:py-28 bg-slate-50">
+    <section id="tools" className="pt-20 sm:pt-28 pb-10 sm:pb-12 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -127,43 +127,109 @@ export default function Tools() {
         </div>
 
         {/* Knowledge Partner */}
-        <motion.div
+        <motion.a
+          href="https://thebotcompany.in/"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl px-6 py-5"
+          className="mt-8 relative overflow-hidden rounded-2xl cursor-pointer block"
+          style={{
+            background: "linear-gradient(135deg, #0f172a 0%, #1e2d4a 50%, #0f172a 100%)",
+            border: "1px solid rgba(56,189,248,0.2)",
+            boxShadow: "0 0 0 1px rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.3)",
+          }}
         >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-[11px] font-bold text-white/50 uppercase tracking-widest mb-0.5">Knowledge Partner</p>
-              <p className="text-base font-bold text-white">The Bot Company</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-            </svg>
-            <span className="text-sm font-medium text-white/70">thebotcompany.in</span>
-          </div>
-        </motion.div>
+          {/* Grid pattern */}
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)", backgroundSize: "40px 40px" }}
+          />
+          {/* Blue orb left */}
+          <div className="absolute left-0 top-0 bottom-0 w-64 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at left center, rgba(56,189,248,0.12) 0%, transparent 70%)" }}
+          />
+          {/* Purple orb right */}
+          <div className="absolute right-0 top-0 bottom-0 w-64 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse at right center, rgba(139,92,246,0.12) 0%, transparent 70%)" }}
+          />
+          {/* Top shimmer line */}
+          <div className="absolute top-0 left-0 right-0 h-px"
+            style={{ background: "linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.7) 40%, rgba(139,92,246,0.7) 60%, transparent 100%)" }}
+          />
+          {/* Shine sweep */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.04) 50%, transparent 80%)" }}
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", repeatDelay: 3 }}
+          />
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="mt-5 text-center"
-        >
-          <p className="text-sm text-slate-500 bg-white border border-slate-200 rounded-full px-5 py-2.5 inline-block shadow-sm">
-            All tools are free-to-use - No downloads required on Day 1 - Age-appropriate accounts set up for under-13s
-          </p>
-        </motion.div>
+          <div className="relative flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-14 px-8 py-8 sm:py-10">
+
+            {/* Left: text */}
+            <div className="flex flex-col items-center sm:items-start text-center sm:text-left sm:max-w-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <motion.div
+                  className="w-2 h-2 rounded-full bg-sky-400"
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+                />
+                <span className="text-[10px] font-black text-sky-400 uppercase tracking-[0.2em]">Knowledge Partner</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight mb-2">
+                The Bot Company
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-5">
+                AI education &amp; tools for the next generation
+              </p>
+              <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-slate-300"
+                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                <svg className="w-3 h-3 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                thebotcompany.in
+              </span>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px self-stretch"
+              style={{ background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent)" }}
+            />
+
+            {/* Right: Logo */}
+            <div className="flex items-center justify-center flex-shrink-0 py-2">
+              <div className="relative">
+                {/* Pulse glow rings */}
+                <motion.div
+                  className="absolute rounded-2xl"
+                  style={{ inset: "-8px", background: "rgba(56,189,248,0.15)", filter: "blur(12px)" }}
+                  animate={{ opacity: [0.6, 0.2, 0.6], scale: [1, 1.15, 1] }}
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                />
+                <motion.div
+                  className="absolute rounded-2xl"
+                  style={{ inset: "-16px", background: "rgba(255,255,255,0.08)", filter: "blur(20px)" }}
+                  animate={{ opacity: [0.4, 0.1, 0.4], scale: [1, 1.2, 1] }}
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 0.3 }}
+                />
+                {/* Logo card */}
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl flex items-center justify-center p-3"
+                  style={{ boxShadow: "0 0 30px rgba(56,189,248,0.25), 0 0 60px rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,0.4)" }}
+                >
+                  <Image src="/bot studiox.png" alt="The Bot Company" width={90} height={90} className="object-contain w-full h-full" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom shimmer line */}
+          <div className="absolute bottom-0 left-0 right-0 h-px"
+            style={{ background: "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.5) 40%, rgba(56,189,248,0.5) 60%, transparent 100%)" }}
+          />
+        </motion.a>
       </div>
     </section>
   );

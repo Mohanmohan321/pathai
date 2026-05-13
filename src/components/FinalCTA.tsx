@@ -59,7 +59,7 @@ export default function FinalCTA() {
           className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 text-rose-700 text-sm font-semibold px-4 py-2 rounded-full mb-8"
         >
           <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
-          Only 25-30 seats available · May 15-17, 2026
+          Only 25-30 seats available · May 18-20, 2026
         </motion.div>
 
         <motion.div
@@ -70,7 +70,9 @@ export default function FinalCTA() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <motion.a
-            href="#pricing"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold px-8 py-4 rounded-full transition-all duration-200 shadow-lg text-base cursor-pointer"

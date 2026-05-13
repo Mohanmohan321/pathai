@@ -15,7 +15,7 @@ export default function Footer() {
               <span className="font-black text-2xl text-blue-400">AI</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-xs">
-              A 3-day immersive AI camp for students in grades 6–9. No coding. Real projects. Real confidence.
+              A 3-day immersive AI camp for students in grades 5–9 (ages 10–14). No coding. Real projects. Real confidence.
             </p>
             <p className="text-xs text-slate-600">Powered by SPI Edge · Building Future-Ready Humans</p>
 

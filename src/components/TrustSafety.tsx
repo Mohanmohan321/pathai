@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 
 const included = [
-  { icon: "🕐", text: "12 hours of facilitated learning" },
-  { icon: "🤖", text: "All AI tool access during camp" },
-  { icon: "🍎", text: "Daily snacks included" },
-  { icon: "📄", text: "Printed materials & RICE poster" },
-  { icon: "🎓", text: "PATH AI completion certificate" },
-  { icon: "💼", text: "Digital portfolio (all 3 projects)" },
-  { icon: "🎭", text: "Team showcase participation" },
-  { icon: "🏆", text: "Award ceremony & prizes" },
-  { icon: "💬", text: "WhatsApp parent group" },
+  { text: "12 hours of facilitated learning" },
+  { text: "All AI tool access during camp" },
+  { text: "Daily snacks included" },
+  { text: "Printed materials & RICE poster" },
+  { text: "PATH AI completion certificate" },
+  { text: "Digital portfolio (all 3 projects)" },
+  { text: "Team showcase participation" },
+  { text: "Award ceremony & prizes" },
+  { text: "WhatsApp parent group" },
 ];
 
 export default function TrustSafety() {
@@ -82,8 +82,10 @@ export default function TrustSafety() {
                   transition={{ duration: 0.35, delay: i * 0.05 }}
                   className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-blue-50 transition-colors duration-200 group"
                 >
-                  <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center text-lg shadow-sm flex-shrink-0 border border-slate-100 group-hover:border-blue-100 transition-colors duration-200">
-                    {item.icon}
+                  <div className="w-9 h-9 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-emerald-100 group-hover:border-blue-100 transition-colors duration-200">
+                    <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
                   <span className="text-sm text-slate-700 font-medium leading-snug">{item.text}</span>
                 </motion.div>

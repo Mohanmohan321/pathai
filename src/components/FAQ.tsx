@@ -9,7 +9,7 @@ const faqs = [
     a: "Absolutely not. Zero coding knowledge required. PATH AI focuses on creative AI use - prompting, storytelling, design, and video production. If your child can type and is curious, they're ready.",
   },
   {
-    q: "Is AI safe for children aged 11-14?",
+    q: "Is AI safe for children aged 10-14?",
     a: "Yes. All AI tool usage is supervised by trained facilitators. For students under 13, we use shared or teacher-managed accounts. We also teach age-appropriate AI ethics - how to use AI responsibly and the difference between learning with AI vs copying from it.",
   },
   {
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Is this camp online or offline?",
-    a: "Fully offline and in-person. We believe the best learning happens face-to-face, in teams, with real facilitators. The camp runs May 15-17, 2026 from 9 AM to 1 PM each day.",
+    a: "Fully offline and in-person. We believe the best learning happens face-to-face, in teams, with real facilitators. The camp runs May 18-20, 2026 from 9 AM to 1 PM each day.",
   },
   {
     q: "Will parents receive their child's projects?",

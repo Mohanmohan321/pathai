@@ -88,7 +88,9 @@ export default function Navbar() {
               WhatsApp
             </a>
             <motion.a
-              href="#pricing"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
@@ -164,7 +166,9 @@ export default function Navbar() {
                       WhatsApp Us
                     </a>
                     <a
-                      href="#pricing"
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="bg-blue-600 text-white text-center font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >

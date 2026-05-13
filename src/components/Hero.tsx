@@ -75,7 +75,7 @@ function CountdownBox({ value, label }: { value: number; label: string }) {
 }
 
 export default function Hero() {
-  const campStart = new Date("2026-05-15T09:00:00+05:30");
+  const campStart = new Date("2026-05-18T09:00:00+05:30");
   const timeLeft = useCountdown(campStart);
   const isDesktop = useIsDesktop();
 
@@ -102,26 +102,24 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col overflow-hidden bg-white pt-16"
       onMouseMove={handleMouseMove}
     >
-      {/* Grid layers — desktop only (useAnimationFrame is too heavy on mobile) */}
-      {isDesktop && (
-        <>
-          <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
-            <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-          </div>
-          <motion.div
-            className="absolute inset-0 z-0 opacity-50 pointer-events-none"
-            style={{ maskImage, WebkitMaskImage: maskImage }}
-          >
-            <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-          </motion.div>
-        </>
-      )}
+      {/* Grid Layer 1 — subtle always-visible */}
+      <div className="absolute inset-0 z-0 opacity-[0.07] pointer-events-none">
+        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+      </div>
 
-      {/* Colour orbs — smaller blur radius on mobile to reduce GPU composite layers */}
+      {/* Grid Layer 2 — vivid flashlight on hover */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-50 pointer-events-none"
+        style={{ maskImage, WebkitMaskImage: maskImage }}
+      >
+        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+      </motion.div>
+
+      {/* Colour orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -left-40 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-sky-200 opacity-30 sm:opacity-40 blur-[60px] sm:blur-[130px]" />
-        <div className="absolute top-10 -right-32 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-amber-100 opacity-40 sm:opacity-50 blur-[50px] sm:blur-[110px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full bg-orange-200 opacity-30 sm:opacity-40 blur-[40px] sm:blur-[80px]" />
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-sky-200 opacity-40 blur-[130px]" />
+        <div className="absolute top-10 -right-32 w-[500px] h-[500px] rounded-full bg-amber-100 opacity-50 blur-[110px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[280px] h-[280px] rounded-full bg-orange-200 opacity-40 blur-[80px]" />
       </div>
 
       {/* Main content — z-10 keeps it above grid/orbs */}
@@ -160,7 +158,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-base sm:text-lg text-slate-600 leading-relaxed mb-5 max-w-lg mx-auto lg:mx-0"
               >
-                Kids in grades 6-9 build comics, videos &amp; presentations with real AI tools -
+                Kids in grades 5-9 (ages 10-14) build comics, videos &amp; presentations with real AI tools -
                 and walk away with a portfolio they&apos;re proud of.
               </motion.p>
 
@@ -174,7 +172,7 @@ export default function Hero() {
                 <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                May 15-17, 2026 &nbsp;·&nbsp; 9 AM - 1 PM &nbsp;·&nbsp; First Batch
+                May 18-20, 2026 &nbsp;·&nbsp; 9 AM - 1 PM &nbsp;·&nbsp; First Batch
               </motion.div>
 
               {/* Countdown */}
@@ -206,7 +204,9 @@ export default function Hero() {
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
                 <motion.a
-                  href="#pricing"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold px-6 py-3.5 rounded-full transition-all duration-200 shadow-lg cursor-pointer text-base"

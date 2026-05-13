@@ -6,11 +6,9 @@ import WhyAI from "@/components/WhyAI";
 import PainPoints from "@/components/PainPoints";
 import WhyDifferent from "@/components/WhyDifferent";
 import WhatBuild from "@/components/WhatBuild";
-import Curriculum from "@/components/Curriculum";
 import Tools from "@/components/Tools";
 import Venue from "@/components/Venue";
 import TrustSafety from "@/components/TrustSafety";
-import Assessment from "@/components/Assessment";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -26,11 +24,9 @@ export default function Home() {
         <PainPoints />
         <WhyDifferent />
         <WhatBuild />
-        <Curriculum />
         <Tools />
         <Venue />
         <TrustSafety />
-        <Assessment />
         <Pricing />
         <FAQ />
       </main>

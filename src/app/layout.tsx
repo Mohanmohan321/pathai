@@ -16,16 +16,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PATH AI – AI Summer Camp for Young Innovators | May 15–17, 2026",
+  title: "PATH AI – AI Summer Camp for Young Innovators | May 18–20, 2026",
   description:
-    "3-day immersive AI camp for grades 6–9. Kids build real AI projects: comics, videos & presentations. No coding needed. ₹3,999 only. Powered by SPI Edge.",
+    "3-day immersive AI camp for grades 5–9. Kids build real AI projects: comics, videos & presentations. No coding needed. ₹3,999 only. Powered by SPI Edge.",
   keywords: [
     "AI camp",
     "summer camp for kids",
     "PATH AI",
     "SPI Edge",
     "AI for children",
-    "grades 6-9",
+    "grades 5-9",
     "AI literacy",
   ],
   openGraph: {

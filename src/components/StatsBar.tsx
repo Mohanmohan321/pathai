@@ -31,7 +31,7 @@ const stats = [
     to: 3,
     suffix: "",
     label: "Days Camp",
-    sub: "May 15–17, 2026",
+    sub: "May 18–20, 2026",
     bg: "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)",
     glow: "#38bdf8",
     conic: "conic-gradient(from 0deg, transparent 0% 60%, #7dd3fc 80%, white 90%, #7dd3fc 95%, transparent 100%)",

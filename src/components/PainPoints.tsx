@@ -17,7 +17,7 @@ const painPoints = [
     conic: "conic-gradient(from 0deg, transparent 0% 60%, #c4b5fd 80%, white 90%, #c4b5fd 95%, transparent 100%)",
     bg: "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%)",
     problem: "AI feels overwhelming to navigate",
-    solution: "Our curriculum is built for grades 6–9. No overwhelm — just creative exploration at their level.",
+    solution: "Our curriculum is built for grades 5–9 (ages 10–14). No overwhelm — just creative exploration at their level.",
   },
   {
     accent: "#0ea5e9",

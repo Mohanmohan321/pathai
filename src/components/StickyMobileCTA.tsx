@@ -38,7 +38,9 @@ export default function StickyMobileCTA() {
                 WhatsApp
               </a>
               <a
-                href="#pricing"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-[2] flex items-center justify-center gap-1.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-bold py-3 rounded-xl transition-all cursor-pointer text-sm"
               >
                 Reserve Seat - ₹3,999
