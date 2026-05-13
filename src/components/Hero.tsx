@@ -78,6 +78,7 @@ export default function Hero() {
   const campStart = new Date("2026-05-18T09:00:00+05:30");
   const timeLeft = useCountdown(campStart);
   const isDesktop = useIsDesktop();
+  const d = isDesktop ? 1 : 0; // duration multiplier — 0 makes all animations instant on mobile
 
   const gridOffsetX = useMotionValue(0);
   const gridOffsetY = useMotionValue(0);
@@ -138,7 +139,7 @@ export default function Hero() {
               <motion.h1
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.1 }}
+                transition={{ duration: 0.65 * d, delay: 0.1 * d }}
                 className="text-4xl sm:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900 mb-4"
               >
                 Turn Your Child Into an{" "}
@@ -149,7 +150,7 @@ export default function Hero() {
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    transition={{ duration: 0.6 * d, delay: 0.8 * d }}
                     className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full origin-left"
                   />
                 </span>
@@ -159,7 +160,7 @@ export default function Hero() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6 * d, delay: 0.2 * d }}
                 className="text-base sm:text-lg text-slate-600 leading-relaxed mb-5 max-w-lg mx-auto lg:mx-0"
               >
                 Kids in grades 5-9 (ages 10-14) build comics, videos &amp; presentations with real AI tools -
@@ -170,7 +171,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.25 }}
+                transition={{ duration: 0.5 * d, delay: 0.25 * d }}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5 mb-7"
               >
                 <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -183,7 +184,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.32 }}
+                transition={{ duration: 0.5 * d, delay: 0.32 * d }}
                 className="mb-8"
               >
                 <p className="text-[11px] text-slate-400 uppercase tracking-widest font-semibold mb-3 text-center lg:text-left">
@@ -204,7 +205,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.5 * d, delay: 0.4 * d }}
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
                 <motion.a
@@ -235,7 +236,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.88, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.25, ease: [0.34, 1.56, 0.64, 1] }}
+                transition={{ duration: 0.75 * d, delay: 0.25 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="relative z-10"
               >
                 <motion.div
@@ -257,7 +258,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45, delay: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+                transition={{ duration: 0.45 * d, delay: 0.6 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 top-4 left-4 sm:left-0"
               >
                 <motion.div
@@ -272,7 +273,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45, delay: 0.9, ease: [0.34, 1.56, 0.64, 1] }}
+                transition={{ duration: 0.45 * d, delay: 0.9 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 bottom-8 right-4 sm:right-0"
               >
                 <motion.div
@@ -287,7 +288,7 @@ export default function Hero() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45, delay: 1.1, ease: [0.34, 1.56, 0.64, 1] }}
+                transition={{ duration: 0.45 * d, delay: 1.1 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 top-1/2 right-2 sm:right-[-10px]"
               >
                 <motion.div

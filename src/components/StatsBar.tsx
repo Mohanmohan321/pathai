@@ -3,6 +3,12 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => { setIsDesktop(window.innerWidth >= 768); }, []);
+  return isDesktop;
+}
+
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -66,6 +72,7 @@ const stats = [
 ];
 
 export default function StatsBar() {
+  const isDesktop = useIsDesktop();
   return (
     <section className="py-10 sm:py-14 bg-warm">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
@@ -76,8 +83,8 @@ export default function StatsBar() {
               initial={{ opacity: 0, y: 24, scale: 0.93 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ scale: 1.04, y: -4 }}
+              transition={{ duration: isDesktop ? 0.5 : 0, delay: isDesktop ? i * 0.1 : 0 }}
+              whileHover={isDesktop ? { scale: 1.04, y: -4 } : {}}
               className="relative rounded-3xl p-[2.5px] overflow-hidden cursor-default"
               style={{
                 boxShadow: `0 8px 40px ${stat.glow}55, 0 2px 8px rgba(0,0,0,0.15)`,
