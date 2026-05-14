@@ -6,7 +6,6 @@ import WhyAI from "@/components/WhyAI";
 import PainPoints from "@/components/PainPoints";
 import WhyDifferent from "@/components/WhyDifferent";
 import WhatBuild from "@/components/WhatBuild";
-import Tools from "@/components/Tools";
 import Venue from "@/components/Venue";
 import TrustSafety from "@/components/TrustSafety";
 import Pricing from "@/components/Pricing";
@@ -24,7 +23,6 @@ export default function Home() {
         <PainPoints />
         <WhyDifferent />
         <WhatBuild />
-        <Tools />
         <Venue />
         <TrustSafety />
         <Pricing />

@@ -19,7 +19,6 @@ export default function Navbar() {
   const links = [
     { label: "About", href: "#about" },
     { label: "Curriculum", href: "#curriculum" },
-    { label: "Tools", href: "#tools" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
   ];
