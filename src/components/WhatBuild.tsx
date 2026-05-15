@@ -42,7 +42,7 @@ export default function WhatBuild() {
   const PANEL_H = screenSize.lessThan("sm") ? 370 : screenSize.lessThan("md") ? 320 : 280;
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section id="curriculum" className="py-16 sm:py-24 bg-white">
       <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 6 : 10} />
 
       <div className="max-w-4xl mx-auto px-5 sm:px-6">

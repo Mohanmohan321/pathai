@@ -23,6 +23,12 @@ export default function Navbar() {
     { label: "FAQ", href: "#faq" },
   ];
 
+  function scrollTo(href: string) {
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <motion.div
       className="fixed z-50"
@@ -66,6 +72,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
                 className="text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 cursor-pointer font-medium px-3 py-2 rounded-full"
               >
                 {link.label}
@@ -147,7 +154,7 @@ export default function Navbar() {
                       key={link.href}
                       href={link.href}
                       className="text-slate-700 font-medium py-2.5 px-3 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer text-sm"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); setTimeout(() => scrollTo(link.href), 150); }}
                     >
                       {link.label}
                     </a>

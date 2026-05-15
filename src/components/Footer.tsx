@@ -53,7 +53,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <div>
-                  <p className="text-white text-sm font-semibold">May 15–17, 2026</p>
+                  <p className="text-white text-sm font-semibold">May 18–20, 2026</p>
                   <p className="text-slate-500 text-xs">9:00 AM – 1:00 PM each day</p>
                 </div>
               </li>
@@ -63,11 +63,11 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div>
-                  <p className="text-white text-sm font-semibold">Sahanas - Art your way, Mylapore</p>
+                  <p className="text-white text-sm font-semibold">Euphoria World Cafe</p>
                   <p className="text-slate-500 text-xs leading-relaxed">
-                    No. 15 (Old No. 7), First Floor, Unit 2,<br />
-                    D&apos;Silva Road, near HDFC Bank,<br />
-                    Abiramapuram, Chennai
+                    30, R.V. Nagar, Thiruvalluvar Nagar,<br />
+                    VOC Nagar, Annanagar East,<br />
+                    Chennai, Tamil Nadu 600102
                   </p>
                 </div>
               </li>
