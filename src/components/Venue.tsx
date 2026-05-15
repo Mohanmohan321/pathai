@@ -3,17 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const venuePhotos = [
-  "/venue/2024-09-20.webp",
-  "/venue/2024-12-09.webp",
-  "/venue/2024-09-20 (1).webp",
-  "/venue/unnamed.webp",
-  "/venue/unnamed (1).webp",
-];
-
 export default function Venue() {
   return (
-    <section className="py-20 sm:py-28 bg-white overflow-hidden">
+    <section id="venue" className="py-20 sm:py-28 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
@@ -39,24 +31,30 @@ export default function Venue() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="max-w-3xl mx-auto bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-3xl p-6 sm:p-8 mb-12"
+          className="max-w-3xl mx-auto bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-3xl p-6 sm:p-8"
           style={{ boxShadow: "0 8px 40px rgba(251,191,36,0.15)" }}
         >
           <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
 
             {/* Logo */}
-            <div className="flex-shrink-0 bg-white rounded-2xl p-4 shadow-md border border-amber-100">
+            <a
+              href="https://euphoriaworld.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 bg-white rounded-2xl p-4 shadow-md border border-amber-100 hover:shadow-lg transition-shadow duration-200"
+            >
               <Image
-                src="/venue/venue logo.png"
-                alt="Venue Logo"
+                src="/venue/venue2logo.webp"
+                alt="Euphoria World Cafe"
                 width={120}
                 height={80}
                 className="object-contain"
               />
-            </div>
+            </a>
 
             {/* Address + Map */}
             <div className="flex-1 text-center sm:text-left">
+              <p className="text-base font-bold text-slate-800 mb-1">Euphoria World Cafe</p>
               <div className="flex items-start gap-3 justify-center sm:justify-start mb-4">
                 <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -66,60 +64,46 @@ export default function Venue() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-800 leading-relaxed">
-                    New No. 15, Old No. 7, First Floor-Unit-2,
+                    30, R.V. Nagar, Thiruvalluvar Nagar,
                   </p>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    D&apos;Silva Road, Mylapore,
+                    VOC Nagar, Annanagar East,
                   </p>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Near HDFC Bank, Abiramapuram,
-                  </p>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Chennai, Tamil Nadu 600004
+                    Chennai, Tamil Nadu 600102
                   </p>
                 </div>
               </div>
 
-              <a
-                href="https://maps.app.goo.gl/wknSBHBfcmJBv1pr7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 text-sm shadow-md cursor-pointer"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                Get Directions
-              </a>
+              <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+                <a
+                  href="https://maps.app.goo.gl/iKQQBisZ3v5YPN8u7?g_st=aw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 text-sm shadow-md cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                  </svg>
+                  Get Directions
+                </a>
+                <a
+                  href="https://euphoriaworld.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-amber-50 text-amber-700 border border-amber-200 font-semibold px-5 py-2.5 rounded-full transition-colors duration-200 text-sm shadow-sm cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                  Visit Website
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
-      </div>
 
-      {/* Full-width Photo Carousel */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <div className="flex gap-4 animate-marquee" style={{ width: "max-content" }}>
-          {[...venuePhotos, ...venuePhotos].map((photo, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-72 sm:w-80 h-52 sm:h-60 rounded-2xl overflow-hidden"
-              style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.10)" }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={photo}
-                alt={`Venue photo ${i + 1}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
