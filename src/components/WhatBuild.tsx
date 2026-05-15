@@ -32,18 +32,19 @@ const projects = [
   },
 ];
 
-const TAB_H = 52; // px — tab bar height
+const TAB_H = 52;
 
 export default function WhatBuild() {
   const [activeTab, setActiveTab] = useState(0);
   const screenSize = useScreenSize();
   const active = projects[activeTab];
-  // More height on mobile because content stacks vertically
-  const PANEL_H = screenSize.lessThan("sm") ? 370 : screenSize.lessThan("md") ? 320 : 280;
+  const isMobile = screenSize.lessThan("md");
+  const PANEL_H = screenSize.lessThan("sm") ? 370 : isMobile ? 320 : 280;
 
   return (
     <section id="curriculum" className="py-16 sm:py-24 bg-white">
-      <GooeyFilter id="wb-goo" strength={screenSize.lessThan("md") ? 6 : 10} />
+      {/* Only render gooey filter on desktop — SVG filters force software rendering on mobile */}
+      {!isMobile && <GooeyFilter id="wb-goo" strength={10} />}
 
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
         {/* Heading */}
@@ -66,37 +67,59 @@ export default function WhatBuild() {
         {/* Tab + Panel */}
         <div className="relative" style={{ height: TAB_H + PANEL_H }}>
 
-          {/* ── Layer 1: Gooey shapes (tab indicator + panel background) ── */}
+          {/* ── Layer 1: Background shapes ── */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ filter: "url(#wb-goo)" }}
+            style={isMobile ? undefined : { filter: "url(#wb-goo)" }}
           >
             {/* Tab row */}
             <div className="flex w-full" style={{ height: TAB_H }}>
               {projects.map((p, i) => (
                 <div key={i} className="relative flex-1">
-                  {activeTab === i && (
-                    <motion.div
-                      layoutId="wb-tab-bg"
+                  {isMobile ? (
+                    /* Mobile: instant solid background, no layout animation */
+                    <div
                       className="absolute inset-0"
-                      style={{ backgroundColor: p.color }}
-                      transition={{ type: "tween", ease: "easeInOut", duration: 0.22 }}
+                      style={{
+                        backgroundColor: activeTab === i ? p.color : "transparent",
+                        transition: "background-color 0.15s",
+                      }}
                     />
+                  ) : (
+                    activeTab === i && (
+                      <motion.div
+                        layoutId="wb-tab-bg"
+                        className="absolute inset-0"
+                        style={{ backgroundColor: p.color }}
+                        transition={{ type: "tween", ease: "easeInOut", duration: 0.22 }}
+                      />
+                    )
                   )}
                 </div>
               ))}
             </div>
 
-            {/* Content panel solid fill — same color as active tab, merges via goo */}
-            <motion.div
-              className="w-full"
-              animate={{ backgroundColor: active.color }}
-              transition={{ duration: 0.3 }}
-              style={{ height: PANEL_H }}
-            />
+            {/* Content panel background */}
+            {isMobile ? (
+              <div
+                className="w-full"
+                style={{
+                  height: PANEL_H,
+                  backgroundColor: active.color,
+                  transition: "background-color 0.15s",
+                }}
+              />
+            ) : (
+              <motion.div
+                className="w-full"
+                animate={{ backgroundColor: active.color }}
+                transition={{ duration: 0.3 }}
+                style={{ height: PANEL_H }}
+              />
+            )}
           </div>
 
-          {/* ── Layer 2: Interactive content (no filter, sharp) ── */}
+          {/* ── Layer 2: Interactive content ── */}
           <div className="relative z-10 flex flex-col" style={{ height: TAB_H + PANEL_H }}>
 
             {/* Tab labels */}
@@ -105,10 +128,10 @@ export default function WhatBuild() {
                 <button
                   key={i}
                   onClick={() => setActiveTab(i)}
-                  className="flex-1 flex items-center justify-center transition-colors duration-200"
+                  className="flex-1 flex items-center justify-center"
                 >
                   <span
-                    className={`text-sm sm:text-base font-bold transition-colors duration-200 ${
+                    className={`text-sm sm:text-base font-bold transition-colors duration-150 ${
                       activeTab === i ? "text-white" : "text-slate-400 hover:text-slate-600"
                     }`}
                   >
@@ -126,7 +149,7 @@ export default function WhatBuild() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.18, ease: "easeInOut" }}
+                  transition={{ duration: isMobile ? 0.1 : 0.18, ease: "easeInOut" }}
                   className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
                 >
                   {/* Left: project info */}
