@@ -63,7 +63,7 @@ function useCountdown(target: Date) {
 
 function CountdownBox({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex flex-col items-center bg-white/90 backdrop-blur-sm rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 shadow-sm border border-slate-100 min-w-[58px] sm:min-w-[68px]">
+    <div className="flex flex-col items-center bg-white rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 shadow-sm border border-slate-100 min-w-[58px] sm:min-w-[68px]">
       <span className="text-2xl sm:text-3xl font-bold text-sky-500 tabular-nums leading-none">
         {String(value).padStart(2, "0")}
       </span>
@@ -78,6 +78,11 @@ export default function Hero() {
   const campStart = new Date("2026-05-18T09:00:00+05:30");
   const timeLeft = useCountdown(campStart);
   const isDesktop = useIsDesktop();
+
+  useEffect(() => {
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+  }, []);
   const d = isDesktop ? 1 : 0; // duration multiplier — 0 makes all animations instant on mobile
 
   const gridOffsetX = useMotionValue(0);
@@ -120,11 +125,11 @@ export default function Hero() {
         </motion.div>
       )}
 
-      {/* Colour orbs */}
+      {/* Colour orbs — desktop only, large blurs are expensive on mobile GPU */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-sky-200 opacity-40 blur-[130px]" />
-        <div className="absolute top-10 -right-32 w-[500px] h-[500px] rounded-full bg-amber-100 opacity-50 blur-[110px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[280px] h-[280px] rounded-full bg-orange-200 opacity-40 blur-[80px]" />
+        <div className="hidden sm:block absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-sky-200 opacity-40 blur-[130px]" />
+        <div className="hidden sm:block absolute top-10 -right-32 w-[500px] h-[500px] rounded-full bg-amber-100 opacity-50 blur-[110px]" />
+        <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-[280px] h-[280px] rounded-full bg-orange-200 opacity-40 blur-[80px]" />
       </div>
 
       {/* Main content — z-10 keeps it above grid/orbs */}
@@ -308,7 +313,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <div className="relative z-10 flex justify-center pb-6">
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={isDesktop ? { y: [0, 8, 0] } : {}}
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="flex flex-col items-center gap-1 text-slate-400"
         >

@@ -13,9 +13,14 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
+  const isDesktop = useIsDesktop();
 
   useEffect(() => {
     if (!inView) return;
+    if (!isDesktop) {
+      setValue(to);
+      return;
+    }
     const duration = 1200;
     const start = performance.now();
     let rafId: number;
@@ -27,7 +32,7 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
     }
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [inView, to]);
+  }, [inView, to, isDesktop]);
 
   return <span ref={ref}>{value}{suffix}</span>;
 }
