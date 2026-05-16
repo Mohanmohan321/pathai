@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const included = [
   { text: "12 hours of facilitated learning" },
@@ -18,7 +18,7 @@ export default function TrustSafety() {
   return (
     <section className="py-20 sm:py-28 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -30,10 +30,10 @@ export default function TrustSafety() {
             <span className="text-gradient">&#8377;3,999</span>
           </h2>
           <p className="text-lg text-slate-500">One price. No surprises. Everything your child needs.</p>
-        </motion.div>
+        </m.div>
 
         {/* Mac-style window */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,7 +74,7 @@ export default function TrustSafety() {
           <div className="bg-white px-6 sm:px-8 pt-6 pb-8">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {included.map((item, i) => (
-                <motion.div
+                <m.div
                   key={item.text}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function TrustSafety() {
                     </svg>
                   </div>
                   <span className="text-sm text-slate-700 font-medium leading-snug">{item.text}</span>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function TrustSafety() {
               <span className="text-[11px] text-slate-500 font-semibold">&#8377;3,999 - All-Inclusive</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

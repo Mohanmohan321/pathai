@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 function useIsDesktop() {
@@ -83,7 +83,7 @@ export default function StatsBar() {
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, i) => (
-            <motion.div
+            <m.div
               key={stat.label}
               initial={{ opacity: 0, y: 24, scale: 0.93 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -130,7 +130,7 @@ export default function StatsBar() {
                   <div className="text-xs text-white/70 mt-1 font-medium">{stat.sub}</div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

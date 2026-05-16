@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const painPoints = [
   {
@@ -41,7 +41,7 @@ export default function PainPoints() {
   return (
     <section className="py-16 sm:py-24 bg-warm">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,17 +55,16 @@ export default function PainPoints() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             PATH AI was designed to solve exactly these concerns.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
           {painPoints.map((item, i) => (
-            <motion.div
+            <m.div
               key={item.problem}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              whileHover={{ scale: 1.02, y: -3 }}
               className="relative rounded-3xl overflow-hidden cursor-default"
               style={{
                 border: `2px solid ${item.glow}40`,
@@ -120,7 +119,7 @@ export default function PainPoints() {
                   <p className="text-sm text-slate-600 leading-relaxed">{item.solution}</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

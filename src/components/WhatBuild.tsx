@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { GooeyFilter } from "@/components/ui/gooey-filter";
 import { useScreenSize } from "@/hooks/use-screen-size";
 
@@ -48,7 +48,7 @@ export default function WhatBuild() {
 
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
         {/* Heading */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -62,7 +62,7 @@ export default function WhatBuild() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             No participation trophies. Every student walks away with a portfolio they built themselves.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Tab + Panel */}
         <div className="relative" style={{ height: TAB_H + PANEL_H }}>
@@ -87,7 +87,7 @@ export default function WhatBuild() {
                     />
                   ) : (
                     activeTab === i && (
-                      <motion.div
+                      <m.div
                         layoutId="wb-tab-bg"
                         className="absolute inset-0"
                         style={{ backgroundColor: p.color }}
@@ -110,7 +110,7 @@ export default function WhatBuild() {
                 }}
               />
             ) : (
-              <motion.div
+              <m.div
                 className="w-full"
                 animate={{ backgroundColor: active.color }}
                 transition={{ duration: 0.3 }}
@@ -144,7 +144,7 @@ export default function WhatBuild() {
             {/* Content panel */}
             <div className="flex-1 overflow-hidden">
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={activeTab}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -181,14 +181,14 @@ export default function WhatBuild() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
             </div>
           </div>
         </div>
 
         {/* Portfolio note */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -201,7 +201,7 @@ export default function WhatBuild() {
           <p className="text-base sm:text-lg text-slate-500">
             A proud portfolio your child built from scratch — to keep, share, and show off forever.
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const days = [
   {
@@ -75,7 +75,7 @@ export default function Curriculum() {
   return (
     <section id="curriculum" className="py-20 sm:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -88,11 +88,11 @@ export default function Curriculum() {
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Click any day card to reveal the schedule. 9 AM to 1 PM - 4 focused hours of real AI creation.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {days.map((day, i) => (
-            <motion.div
+            <m.div
               key={day.day}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ export default function Curriculum() {
 
               {/* Card content */}
               <div className="relative z-10 h-[420px] rounded-[22px] overflow-hidden" style={{ perspective: "1200px" }}>
-              <motion.div
+              <m.div
                 className="relative w-full h-full cursor-pointer"
                 animate={{ rotateY: flipped === i ? 180 : 0 }}
                 transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
@@ -201,9 +201,9 @@ export default function Curriculum() {
                     <span className="text-xs text-slate-400 font-medium">Tap to close</span>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

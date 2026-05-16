@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
-import { motion, useMotionValue, useMotionTemplate, useAnimationFrame } from "framer-motion";
+import { m, useMotionValue, useMotionTemplate, useAnimationFrame } from "framer-motion";
 import Image from "next/image";
 
 const GRID_SIZE = 40;
@@ -10,7 +10,7 @@ function GridPattern({ offsetX, offsetY }: { offsetX: any; offsetY: any }) {
   return (
     <svg className="w-full h-full">
       <defs>
-        <motion.pattern
+        <m.pattern
           id="hero-grid"
           width={GRID_SIZE}
           height={GRID_SIZE}
@@ -24,7 +24,7 @@ function GridPattern({ offsetX, offsetY }: { offsetX: any; offsetY: any }) {
             stroke="#0ea5e9"
             strokeWidth="0.8"
           />
-        </motion.pattern>
+        </m.pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#hero-grid)" />
     </svg>
@@ -117,12 +117,12 @@ export default function Hero() {
 
       {/* Grid Layer 2 — vivid flashlight on hover, desktop only */}
       {isDesktop && (
-        <motion.div
+        <m.div
           className="absolute inset-0 z-0 opacity-50 pointer-events-none"
           style={{ maskImage, WebkitMaskImage: maskImage }}
         >
           <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
-        </motion.div>
+        </m.div>
       )}
 
       {/* Colour orbs — desktop only, large blurs are expensive on mobile GPU */}
@@ -141,7 +141,7 @@ export default function Hero() {
             <div className="text-center lg:text-left order-1">
 
               {/* Headline */}
-              <motion.h1
+              <m.h1
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65 * d, delay: 0.1 * d }}
@@ -152,17 +152,17 @@ export default function Hero() {
                 in Just{" "}
                 <span className="relative inline-block">
                   3 Days
-                  <motion.span
+                  <m.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.6 * d, delay: 0.8 * d }}
                     className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full origin-left"
                   />
                 </span>
-              </motion.h1>
+              </m.h1>
 
               {/* Sub-copy */}
-              <motion.p
+              <m.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 * d, delay: 0.2 * d }}
@@ -170,10 +170,10 @@ export default function Hero() {
               >
                 Kids in grades 5-9 (ages 10-14) build comics, videos &amp; presentations with real AI tools -
                 and walk away with a portfolio they&apos;re proud of.
-              </motion.p>
+              </m.p>
 
               {/* Date + batch pill */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 * d, delay: 0.25 * d }}
@@ -183,10 +183,10 @@ export default function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 May 18-20, 2026 &nbsp;·&nbsp; 9 AM - 1 PM &nbsp;·&nbsp; First Batch
-              </motion.div>
+              </m.div>
 
               {/* Countdown */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 * d, delay: 0.32 * d }}
@@ -204,16 +204,16 @@ export default function Hero() {
                   <span className="text-xl font-bold text-slate-200">:</span>
                   <CountdownBox value={timeLeft.seconds} label="Secs" />
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* CTA Buttons */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 * d, delay: 0.4 * d }}
                 className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
-                <motion.a
+                <m.a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -226,8 +226,8 @@ export default function Hero() {
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </motion.a>
-              </motion.div>
+                </m.a>
+              </m.div>
             </div>
 
             {/* RIGHT: Hero Image — contained, no overflow into text column */}
@@ -238,13 +238,13 @@ export default function Hero() {
               </div>
 
               {/* Character */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.88, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.75 * d, delay: 0.25 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="relative z-10"
               >
-                <motion.div
+                <m.div
                   animate={isDesktop ? { y: [-8, 8, -8] } : {}}
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                 >
@@ -256,54 +256,54 @@ export default function Hero() {
                     priority
                     className="w-[260px] sm:w-[340px] lg:w-[420px] xl:w-[460px] h-auto drop-shadow-2xl"
                   />
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
               {/* Two floating badges — safely positioned within image bounds */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.45 * d, delay: 0.6 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 top-4 left-4 sm:left-0"
               >
-                <motion.div
+                <m.div
                   animate={isDesktop ? { y: [-4, 4, -4] } : {}}
                   transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
                   className="bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >
                   No Coding!
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.45 * d, delay: 0.9 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 bottom-8 right-4 sm:right-0"
               >
-                <motion.div
+                <m.div
                   animate={isDesktop ? { y: [4, -4, 4] } : {}}
                   transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut" }}
                   className="bg-violet-50 border border-violet-200 text-violet-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >
                   AI Superstar!
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.45 * d, delay: 1.1 * d, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute z-20 top-1/2 right-2 sm:right-[-10px]"
               >
-                <motion.div
+                <m.div
                   animate={isDesktop ? { y: [-5, 5, -5] } : {}}
                   transition={{ repeat: Infinity, duration: 2.6, ease: "easeInOut" }}
                   className="bg-sky-50 border border-sky-200 text-sky-700 font-bold text-xs px-3 py-1.5 rounded-full shadow-md whitespace-nowrap"
                 >
                   Future Ready!
-                </motion.div>
-              </motion.div>
+                </m.div>
+              </m.div>
             </div>
 
           </div>
@@ -312,7 +312,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="relative z-10 flex justify-center pb-6">
-        <motion.div
+        <m.div
           animate={isDesktop ? { y: [0, 8, 0] } : {}}
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="flex flex-col items-center gap-1 text-slate-400"
@@ -321,7 +321,7 @@ export default function Hero() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

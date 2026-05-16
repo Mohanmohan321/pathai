@@ -1,19 +1,19 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function VideoSection() {
   return (
     <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
       {/* Decorative background blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-violet-100 opacity-50 blur-[80px]" />
-        <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-pink-100 opacity-50 blur-[80px]" />
+        <div className="hidden sm:block absolute -top-24 -right-24 w-72 h-72 rounded-full bg-violet-100 opacity-50 blur-[80px]" />
+        <div className="hidden sm:block absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-pink-100 opacity-50 blur-[80px]" />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-5 sm:px-6">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -27,10 +27,10 @@ export default function VideoSection() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             3 days, 3 projects, zero coding — see exactly what your child will experience.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Video embed */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
@@ -48,10 +48,10 @@ export default function VideoSection() {
             allowFullScreen
             className="absolute inset-0 w-full h-full"
           />
-        </motion.div>
+        </m.div>
 
         {/* Register CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -70,7 +70,7 @@ export default function VideoSection() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

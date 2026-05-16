@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const metaRows = [
   {
@@ -45,7 +45,7 @@ export default function Assessment() {
   return (
     <section className="py-16 sm:py-24 bg-warm">
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,10 +58,10 @@ export default function Assessment() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             Help us understand your child&apos;s creativity, curiosity, and learning style.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* macOS window */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,7 +138,7 @@ export default function Assessment() {
             </div>
 
             {/* CTA */}
-            <motion.a
+            <m.a
               href="#"
               target="_blank"
               rel="noopener noreferrer"
@@ -157,7 +157,7 @@ export default function Assessment() {
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-            </motion.a>
+            </m.a>
           </div>
 
           {/* macOS status bar */}
@@ -171,7 +171,7 @@ export default function Assessment() {
             <span className="text-slate-300">·</span>
             <span className="text-[11px] text-slate-400">Completely free</span>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

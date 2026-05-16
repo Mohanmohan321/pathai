@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function FinalCTA() {
   return (
@@ -14,7 +14,7 @@ export default function FinalCTA() {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
         {/* Icon */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -24,9 +24,9 @@ export default function FinalCTA() {
           <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
-        </motion.div>
+        </m.div>
 
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -36,9 +36,9 @@ export default function FinalCTA() {
           The children who learn to{" "}
           <span className="text-gradient">create with AI</span>{" "}
           today will lead tomorrow.
-        </motion.h2>
+        </m.h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,10 +48,10 @@ export default function FinalCTA() {
           In just 3 days, your child will go from AI observer to AI creator.
           They&apos;ll have skills, confidence, and a portfolio they built themselves.
           The only question is: will they be in the room?
-        </motion.p>
+        </m.p>
 
         {/* Urgency pill */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -60,16 +60,16 @@ export default function FinalCTA() {
         >
           <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
           Only 25-30 seats available · May 18-20, 2026
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <motion.a
+          <m.a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
             target="_blank"
             rel="noopener noreferrer"
@@ -82,7 +82,7 @@ export default function FinalCTA() {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </motion.a>
+          </m.a>
           <a
             href="https://wa.me/919025439428"
             target="_blank"
@@ -94,9 +94,9 @@ export default function FinalCTA() {
             </svg>
             Ask on WhatsApp
           </a>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -104,7 +104,7 @@ export default function FinalCTA() {
           className="mt-6 text-sm text-slate-500"
         >
           PATH AI - Powered by SPI Edge &nbsp;·&nbsp; Building Future-Ready Humans
-        </motion.p>
+        </m.p>
       </div>
     </section>
   );

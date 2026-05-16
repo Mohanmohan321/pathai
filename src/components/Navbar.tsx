@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +30,7 @@ export default function Navbar() {
   }
 
   return (
-    <motion.div
+    <m.div
       className="fixed z-50"
       animate={{
         top: scrolled ? 12 : 0,
@@ -39,7 +39,7 @@ export default function Navbar() {
       }}
       transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
     >
-      <motion.div
+      <m.div
         animate={{
           borderRadius: scrolled ? 24 : 0,
           backgroundColor: scrolled ? "rgba(255,255,255,0.98)" : "rgba(255,255,255,0.97)",
@@ -93,7 +93,7 @@ export default function Navbar() {
               </svg>
               WhatsApp
             </a>
-            <motion.a
+            <m.a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
               target="_blank"
               rel="noopener noreferrer"
@@ -102,7 +102,7 @@ export default function Navbar() {
               className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             >
               Register Now
-            </motion.a>
+            </m.a>
 
             {/* Mobile hamburger */}
             <button
@@ -110,26 +110,26 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
-              <motion.div
+              <m.div
                 animate={isMenuOpen ? "open" : "closed"}
                 className="flex flex-col gap-1 w-5"
               >
-                <motion.span
+                <m.span
                   variants={{ open: { rotate: 45, y: 6 }, closed: { rotate: 0, y: 0 } }}
                   transition={{ duration: 0.2 }}
                   className="block h-0.5 bg-slate-700 rounded-full"
                 />
-                <motion.span
+                <m.span
                   variants={{ open: { opacity: 0, scaleX: 0 }, closed: { opacity: 1, scaleX: 1 } }}
                   transition={{ duration: 0.2 }}
                   className="block h-0.5 bg-slate-700 rounded-full"
                 />
-                <motion.span
+                <m.span
                   variants={{ open: { rotate: -45, y: -6 }, closed: { rotate: 0, y: 0 } }}
                   transition={{ duration: 0.2 }}
                   className="block h-0.5 bg-slate-700 rounded-full"
                 />
-              </motion.div>
+              </m.div>
             </button>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function Navbar() {
         {/* Mobile Menu — slides in under the pill */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -183,15 +183,15 @@ export default function Navbar() {
                   </div>
                 </nav>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
-      </motion.div>
+      </m.div>
 
       {/* Curved bottom wave — only visible when NOT scrolled and at very top */}
       <AnimatePresence>
         {!scrolled && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -210,9 +210,9 @@ export default function Navbar() {
                 fill="rgba(255,255,255,0)"
               />
             </svg>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 }

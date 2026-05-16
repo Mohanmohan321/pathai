@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const cards = [
   {
@@ -30,7 +30,7 @@ export default function WhyAI() {
   return (
     <section id="about" className="py-16 sm:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -44,17 +44,16 @@ export default function WhyAI() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             The world is changing. The kids who understand AI won&apos;t just survive - they&apos;ll lead.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
           {cards.map((card, i) => (
-            <motion.div
+            <m.div
               key={card.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              whileHover={{ scale: 1.03, y: -4 }}
               className="relative rounded-3xl overflow-hidden cursor-default"
               style={{
                 border: `2px solid ${card.glow}45`,
@@ -95,7 +94,7 @@ export default function WhyAI() {
                   <p className="text-slate-500 leading-relaxed text-sm">{card.body}</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

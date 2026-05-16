@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 const tools = [
@@ -66,7 +66,7 @@ export default function Tools() {
   return (
     <section id="tools" className="pt-20 sm:pt-28 pb-10 sm:pb-12 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -81,11 +81,11 @@ export default function Tools() {
             We intentionally keep the tool count low - 4 core tools across 3 days - so
             students go deep rather than wide. Every tool is free and usable at home after camp.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {tools.map((tool, i) => (
-            <motion.div
+            <m.div
               key={tool.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -122,12 +122,12 @@ export default function Tools() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Knowledge Partner */}
-        <motion.a
+        <m.a
           href="https://thebotcompany.in/"
           target="_blank"
           rel="noopener noreferrer"
@@ -159,7 +159,7 @@ export default function Tools() {
             style={{ background: "linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.7) 40%, rgba(139,92,246,0.7) 60%, transparent 100%)" }}
           />
           {/* Shine sweep */}
-          <motion.div
+          <m.div
             className="absolute inset-0 pointer-events-none"
             style={{ background: "linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.04) 50%, transparent 80%)" }}
             animate={{ x: ["-100%", "200%"] }}
@@ -171,7 +171,7 @@ export default function Tools() {
             {/* Left: text */}
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left sm:max-w-sm">
               <div className="flex items-center gap-2 mb-3">
-                <motion.div
+                <m.div
                   className="w-2 h-2 rounded-full bg-sky-400"
                   animate={{ opacity: [1, 0.3, 1] }}
                   transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
@@ -202,13 +202,13 @@ export default function Tools() {
             <div className="flex items-center justify-center flex-shrink-0 py-2">
               <div className="relative">
                 {/* Pulse glow rings */}
-                <motion.div
+                <m.div
                   className="absolute rounded-2xl"
                   style={{ inset: "-8px", background: "rgba(56,189,248,0.15)", filter: "blur(12px)" }}
                   animate={{ opacity: [0.6, 0.2, 0.6], scale: [1, 1.15, 1] }}
                   transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
                 />
-                <motion.div
+                <m.div
                   className="absolute rounded-2xl"
                   style={{ inset: "-16px", background: "rgba(255,255,255,0.08)", filter: "blur(20px)" }}
                   animate={{ opacity: [0.4, 0.1, 0.4], scale: [1, 1.2, 1] }}
@@ -229,7 +229,7 @@ export default function Tools() {
           <div className="absolute bottom-0 left-0 right-0 h-px"
             style={{ background: "linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.5) 40%, rgba(56,189,248,0.5) 60%, transparent 100%)" }}
           />
-        </motion.a>
+        </m.a>
       </div>
     </section>
   );

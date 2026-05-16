@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { LazyMotion, domMax } from "framer-motion";
 
 export default function SmoothScrollProvider({
   children,
@@ -30,5 +31,5 @@ export default function SmoothScrollProvider({
     };
   }, []);
 
-  return <>{children}</>;
+  return <LazyMotion features={domMax}>{children}</LazyMotion>;
 }

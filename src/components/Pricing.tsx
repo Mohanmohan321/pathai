@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const included = [
   "3-Day Intensive Camp (May 18–20)",
@@ -30,7 +30,7 @@ export default function Pricing() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         {/* Heading */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -44,10 +44,10 @@ export default function Pricing() {
           <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
             One price. Everything included. No hidden charges.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* ── Row 1: Price Hero ── */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -91,7 +91,7 @@ export default function Pricing() {
 
             {/* CTA */}
             <div className="flex-shrink-0 text-center">
-              <motion.a
+              <m.a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfKkrfwAX7AQn2wHReINbAWndwi0hc2f5E7xArOyhnKVyTzJw/viewform?usp=publish-editor"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -104,17 +104,17 @@ export default function Pricing() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </motion.a>
+              </m.a>
               <p className="text-xs text-slate-500 mt-2">Fill the form · Payment confirms seat</p>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* ── Row 2: Inclusions + Camp Details ── */}
         <div className="grid lg:grid-cols-2 gap-5">
 
           {/* What's Included */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -136,10 +136,10 @@ export default function Pricing() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Camp Details */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -174,7 +174,7 @@ export default function Pricing() {
                 <p className="text-slate-400 text-xs">First batch · Early bird advantage</p>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
       </div>

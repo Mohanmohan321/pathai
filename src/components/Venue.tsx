@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 export default function Venue() {
@@ -9,7 +9,7 @@ export default function Venue() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -23,10 +23,10 @@ export default function Venue() {
           <p className="text-lg text-slate-500 max-w-xl mx-auto">
             A dedicated learning space designed for collaboration, creativity, and hands-on work.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Venue Partner Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -101,7 +101,7 @@ export default function Venue() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

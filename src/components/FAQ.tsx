@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -42,7 +42,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -55,7 +55,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
         aria-expanded={open}
       >
         <span className="font-semibold text-slate-800 text-sm sm:text-base leading-snug">{q}</span>
-        <motion.div
+        <m.div
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
           className="w-6 h-6 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 border border-blue-100"
@@ -63,12 +63,12 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
           </svg>
-        </motion.div>
+        </m.div>
       </button>
 
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -78,10 +78,10 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             <div className="px-6 pb-5">
               <p className="text-sm text-slate-600 leading-relaxed">{a}</p>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -89,7 +89,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-20 sm:py-28 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -103,10 +103,10 @@ export default function FAQ() {
           <p className="text-lg text-slate-600">
             Still not sure? Here are the questions parents ask us most often.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Mac-style window */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -156,10 +156,10 @@ export default function FAQ() {
               <span className="text-[11px] text-slate-500 font-semibold">Still curious? Chat with us</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Register Now CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -178,10 +178,10 @@ export default function FAQ() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
-        </motion.div>
+        </m.div>
 
         {/* CTA after FAQ */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -203,7 +203,7 @@ export default function FAQ() {
             </svg>
             Chat with us on WhatsApp
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

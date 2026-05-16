@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const comparisons = [
   { factor: "Duration", them: "8-16 sessions over weeks", us: "3 intensive days" },
@@ -15,7 +15,7 @@ export default function WhyDifferent() {
   return (
     <section className="py-16 sm:py-24 bg-warm">
       <div className="max-w-5xl mx-auto px-5 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -29,10 +29,10 @@ export default function WhyDifferent() {
           <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto">
             Most kids&apos; AI programs are long, online, and coding-heavy. PATH AI is the opposite.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Mac-style window */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,7 +80,7 @@ export default function WhyDifferent() {
           {/* Rows */}
           <div className="bg-white">
             {comparisons.map((row, i) => (
-              <motion.div
+              <m.div
                 key={row.factor}
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -101,7 +101,7 @@ export default function WhyDifferent() {
                   </svg>
                   {row.us}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
@@ -116,7 +116,7 @@ export default function WhyDifferent() {
               <span className="text-[11px] text-slate-500 font-semibold">PATH AI wins every category</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
