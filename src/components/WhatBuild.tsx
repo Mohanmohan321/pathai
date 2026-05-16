@@ -1,9 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
-import { GooeyFilter } from "@/components/ui/gooey-filter";
-import { useScreenSize } from "@/hooks/use-screen-size";
 
 const projects = [
   {
@@ -32,21 +30,14 @@ const projects = [
   },
 ];
 
-const TAB_H = 52;
-
 export default function WhatBuild() {
   const [activeTab, setActiveTab] = useState(0);
-  const screenSize = useScreenSize();
   const active = projects[activeTab];
-  const isMobile = screenSize.lessThan("md");
-  const PANEL_H = screenSize.lessThan("sm") ? 370 : isMobile ? 320 : 280;
 
   return (
     <section id="curriculum" className="py-16 sm:py-24 bg-white">
-      {/* Only render gooey filter on desktop — SVG filters force software rendering on mobile */}
-      {!isMobile && <GooeyFilter id="wb-goo" strength={10} />}
-
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
+
         {/* Heading */}
         <m.div
           initial={{ opacity: 0, y: 24 }}
@@ -64,128 +55,76 @@ export default function WhatBuild() {
           </p>
         </m.div>
 
-        {/* Tab + Panel */}
-        <div className="relative" style={{ height: TAB_H + PANEL_H }}>
-
-          {/* ── Layer 1: Background shapes ── */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={isMobile ? undefined : { filter: "url(#wb-goo)" }}
-          >
-            {/* Tab row */}
-            <div className="flex w-full" style={{ height: TAB_H }}>
-              {projects.map((p, i) => (
-                <div key={i} className="relative flex-1">
-                  {isMobile ? (
-                    /* Mobile: instant solid background, no layout animation */
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        backgroundColor: activeTab === i ? p.color : "transparent",
-                        transition: "background-color 0.15s",
-                      }}
-                    />
-                  ) : (
-                    activeTab === i && (
-                      <m.div
-                        layoutId="wb-tab-bg"
-                        className="absolute inset-0"
-                        style={{ backgroundColor: p.color }}
-                        transition={{ type: "tween", ease: "easeInOut", duration: 0.22 }}
-                      />
-                    )
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Content panel background */}
-            {isMobile ? (
-              <div
-                className="w-full"
-                style={{
-                  height: PANEL_H,
-                  backgroundColor: active.color,
-                  transition: "background-color 0.15s",
-                }}
-              />
-            ) : (
-              <m.div
-                className="w-full"
-                animate={{ backgroundColor: active.color }}
-                transition={{ duration: 0.3 }}
-                style={{ height: PANEL_H }}
-              />
-            )}
-          </div>
-
-          {/* ── Layer 2: Interactive content ── */}
-          <div className="relative z-10 flex flex-col" style={{ height: TAB_H + PANEL_H }}>
-
-            {/* Tab labels */}
-            <div className="flex" style={{ height: TAB_H }}>
-              {projects.map((p, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTab(i)}
-                  className="flex-1 flex items-center justify-center"
-                >
-                  <span
-                    className={`text-sm sm:text-base font-bold transition-colors duration-150 ${
-                      activeTab === i ? "text-white" : "text-slate-400 hover:text-slate-600"
-                    }`}
-                  >
-                    {p.day}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Content panel */}
-            <div className="flex-1 overflow-hidden">
-              <AnimatePresence mode="wait">
+        {/* Segmented tab control — fully detached from card */}
+        <div className="flex gap-1.5 p-1.5 bg-slate-100 rounded-2xl mb-4">
+          {projects.map((p, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveTab(i)}
+              className="relative flex-1 py-2.5 sm:py-3 text-sm sm:text-base font-bold rounded-xl cursor-pointer"
+              style={{ color: activeTab === i ? "#ffffff" : "#94a3b8" }}
+            >
+              {activeTab === i && (
                 <m.div
-                  key={activeTab}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: isMobile ? 0.1 : 0.18, ease: "easeInOut" }}
-                  className="h-full flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
-                >
-                  {/* Left: project info */}
-                  <div className="flex-1">
-                    <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">
-                      {active.title}
-                    </h3>
-                    <p className="text-sm sm:text-base font-semibold text-white/80 mb-4">
-                      {active.tagline}
-                    </p>
-                    <p className="text-sm text-white/70 leading-relaxed max-w-md">
-                      {active.desc}
-                    </p>
-                  </div>
-
-                  {/* Right: skills */}
-                  <div className="sm:w-44 flex-shrink-0">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-3">
-                      Skills Learned
-                    </p>
-                    <div className="flex flex-wrap sm:flex-col gap-2">
-                      {active.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="text-xs font-semibold bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/25"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </m.div>
-              </AnimatePresence>
-            </div>
-          </div>
+                  layoutId="tab-pill"
+                  className="absolute inset-0 rounded-xl shadow-md"
+                  style={{ backgroundColor: p.color }}
+                  transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                />
+              )}
+              <span className="relative z-10 transition-colors duration-150">{p.day}</span>
+            </button>
+          ))}
         </div>
+
+        {/* Content card — rounded, colored, detached from tabs */}
+        <m.div
+          animate={{ backgroundColor: active.color }}
+          transition={{ duration: 0.28 }}
+          className="rounded-3xl overflow-hidden"
+          style={{ backgroundColor: active.color }}
+        >
+          <AnimatePresence mode="wait">
+            <m.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-6 sm:gap-10 p-7 sm:p-10"
+            >
+              {/* Left: project info */}
+              <div className="flex-1">
+                <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">
+                  {active.title}
+                </h3>
+                <p className="text-sm sm:text-base font-semibold text-white/80 mb-4">
+                  {active.tagline}
+                </p>
+                <p className="text-sm text-white/70 leading-relaxed max-w-md">
+                  {active.desc}
+                </p>
+              </div>
+
+              {/* Right: skills */}
+              <div className="sm:w-44 flex-shrink-0">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-3">
+                  Skills Learned
+                </p>
+                <div className="flex flex-wrap sm:flex-col gap-2">
+                  {active.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-xs font-semibold bg-white/20 text-white px-3 py-1.5 rounded-full border border-white/25"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </m.div>
+          </AnimatePresence>
+        </m.div>
 
         {/* Portfolio note */}
         <m.div
